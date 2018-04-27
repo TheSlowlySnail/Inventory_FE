@@ -6,6 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatInputModule,  MatTableModule, MatTableDataSource } from '@angular/material';
+
+
 
 
 @NgModule({
@@ -16,9 +21,14 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [MatTableDataSource],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
