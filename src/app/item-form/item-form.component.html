@@ -1,0 +1,20 @@
+<form class="item-form">
+  <mat-form-field>
+    <input matInput name="barcode" placeholder="Barcode" value="IN SH " [(ngModel)]="barcode">
+  </mat-form-field>
+
+  {{barcode}}
+<br>
+  <mat-form-field>
+    <input matInput name="itemName" placeholder="Item Name" [(ngModel)]="name">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+      <textarea matInput name="description" placeholder="Beschreibung" matTextareaAutosize matAutosizeMinRows="2"
+                matAutosizeMaxRows="5" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button color="green" (click)='onSubmit()'>Item speichern</button>
+</form>

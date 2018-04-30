@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule,  MatTableModule } from '@angular/material';
+import { ItemFormComponent } from './item-form/item-form.component';
+
+import { FormsModule } from '@angular/forms';
+import { ItemFormService } from './item-form.service';
 
 
 
@@ -16,7 +20,8 @@ import { MatInputModule,  MatTableModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +32,10 @@ import { MatInputModule,  MatTableModule } from '@angular/material';
     MatCheckboxModule,
     MatInputModule,
     MatTableModule,
+    FormsModule
 
   ],
-  providers: [],
+  providers: [ItemFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
