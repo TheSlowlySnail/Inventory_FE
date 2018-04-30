@@ -8,7 +8,7 @@ import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import { MatInputModule,  MatTableModule, MatTableDataSource } from '@angular/material';
+import { MatInputModule,  MatTableModule } from '@angular/material';
 
 
 
@@ -26,9 +26,10 @@ import { MatInputModule,  MatTableModule, MatTableDataSource } from '@angular/ma
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+
   ],
-  providers: [MatTableDataSource],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
