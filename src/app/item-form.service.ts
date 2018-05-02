@@ -8,7 +8,7 @@ export class ItemFormService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type': 'application/json'
     })
   };
 
@@ -20,4 +20,11 @@ export class ItemFormService {
     );
   }
 
+  onFileSelected(file: any) {
+    this.http.post('http://127.0.0.1:8000/api/store', file)
+      .subscribe(res => {
+        console.log(res);
+      });
+
+  }
 }

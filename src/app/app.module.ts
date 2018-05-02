@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { MatInputModule,  MatTableModule } from '@angular/material';
 import { ItemFormComponent } from './item-form/item-form.component';
 
@@ -32,7 +32,9 @@ import { ItemFormService } from './item-form.service';
     MatCheckboxModule,
     MatInputModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule
 
   ],
   providers: [ItemFormService],
