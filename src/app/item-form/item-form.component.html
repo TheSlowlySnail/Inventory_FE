@@ -48,7 +48,7 @@
   </mat-form-field>
 
   <br>
-  <input type="file" (change)='uploadImage($event)' name="image" id="image" type="file">
+  <input type="file" (change)='onFileSelected($event)' name="image" id="image" type="file">
   <br>
   <button mat-raised-button color="green" (click)='onSubmit()'>Item speichern</button>
 </form>

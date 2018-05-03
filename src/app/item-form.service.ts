@@ -20,11 +20,12 @@ export class ItemFormService {
     );
   }
 
-  onFileSelected(file: any) {
-    this.http.post('http://127.0.0.1:8000/api/store', file)
-      .subscribe(res => {
-        console.log(res);
-      });
 
+  onUpload(selectedFile: File) {
+    const fd = new FormData();
+    fd.append('image', selectedFile, selectedFile.name);
+    this.http.post('http://127.0.0.1:8000/api/store', fd)
+    .subscribe(res => console.log(res));
   }
+
 }

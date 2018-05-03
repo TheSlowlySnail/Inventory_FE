@@ -23,6 +23,7 @@ export class ItemFormComponent implements OnInit {
   public room: string;
   public annotation: string;
   public manufactor: string;
+  selectedFile: File = null;
 
   constructor(public itemFormService: ItemFormService) {
 
@@ -47,10 +48,13 @@ export class ItemFormComponent implements OnInit {
     this.itemFormService.addItem(this.item);
   }
 
-  uploadImage(event){
-    let formData = new FormData();
-    formData.append('image', event.target.files[0], event.target.files[0].name);
-    this.itemFormService.onFileSelected(formData);
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+    this.itemFormService.onUpload(this.selectedFile);
+  }
+
+  uploadImage(event) {
+
 
   }
 
