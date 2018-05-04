@@ -43,6 +43,7 @@ export class ItemFormComponent implements OnInit {
     this.item.room = this.room;
     this.item.annotation = this.annotation;
     this.item.manufactor = this.manufactor;
+    this.item.image = this.selectedFile.name;
 
     console.log(this.item);
     this.itemFormService.addItem(this.item);

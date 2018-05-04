@@ -13,7 +13,7 @@ export class ItemClass {
   public room?: any,
   public status?: any,
   public annotation?: any,
-  public image?: any,
+  public image?: string,
   public lend?: any,
   public manufactor?: any) {
   }
