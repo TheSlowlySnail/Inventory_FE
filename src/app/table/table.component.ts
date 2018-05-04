@@ -14,7 +14,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   constructor(public http: HttpClient) { }
 
   items: any = [];
-  displayedColumns = ['barcode', 'name'];
+  displayedColumns = ['barcode', 'name', 'link'];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
 

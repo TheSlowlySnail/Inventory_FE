@@ -8,20 +8,38 @@ import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
-import { MatInputModule,  MatTableModule } from '@angular/material';
+import { MatInputModule, MatTableModule } from '@angular/material';
 import { ItemFormComponent } from './item-form/item-form.component';
 
 import { FormsModule } from '@angular/forms';
 import { ItemFormService } from './item-form.service';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
+import { MatCardModule } from '@angular/material/card';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'home', component: TableComponent },
+  { path: 'form', component: ItemFormComponent },
+  { path: '', redirectTo: 'home' , pathMatch: 'full'},
+  {
+    path: 'items', children: [
+      { path: 'list', component: TableComponent , children:[
+        {path: 'detail/:id' , component: ItemDetailComponent }
+      ] }
+    ]
+  }
+
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +52,9 @@ import { ItemFormService } from './item-form.service';
     MatTableModule,
     FormsModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [ItemFormService],
