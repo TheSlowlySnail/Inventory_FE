@@ -19,7 +19,8 @@ export class TableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.items = this.getItems().subscribe((data) => {
+    this.items = this.getItems()
+    .subscribe((data) => {
       this.items = data;
       this.dataSource = new MatTableDataSource(this.items.items);
 
