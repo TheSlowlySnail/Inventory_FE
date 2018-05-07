@@ -19,15 +19,21 @@ import { MatCardModule } from '@angular/material/card';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+
+
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
   { path: 'form', component: ItemFormComponent },
-  { path: '', redirectTo: 'home' , pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'items', children: [
-      { path: 'list', component: TableComponent , children:[
-        {path: 'detail/:id' , component: ItemDetailComponent }
-      ] }
+      {
+        path: 'list', component: TableComponent, children: [
+          { path: 'detail/:id', component: ItemDetailComponent }
+        ]
+      }
     ]
   }
 
@@ -54,10 +60,13 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatDialogModule
 
   ],
-  providers: [ItemFormService],
+  providers: [
+    ItemFormService,
+    { provide: MAT_DIALOG_DATA, useValue: {}       }   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

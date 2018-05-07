@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { MatInputModule, MatTableModule, MatTableDataSource, MatSort } from '@angular/material';
+import { MatInputModule, MatTableModule, MatTableDataSource, MatSort, MatDialog } from '@angular/material';
+import { ItemDetailComponent } from '../item-detail/item-detail.component';
 
 
 @Component({
@@ -11,21 +12,21 @@ import { MatInputModule, MatTableModule, MatTableDataSource, MatSort } from '@an
 })
 export class TableComponent implements OnInit, AfterViewInit {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, public dialog: MatDialog) { }
 
   items: any = [];
-  displayedColumns = ['barcode', 'name', 'link'];
+  displayedColumns = ['barcode', 'name', 'link', 'dialog'];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
     this.items = this.getItems()
-    .subscribe((data) => {
-      this.items = data;
-      this.dataSource = new MatTableDataSource(this.items.items);
+      .subscribe((data) => {
+        this.items = data;
+        this.dataSource = new MatTableDataSource(this.items.items);
 
-      console.log(this.dataSource.data);
-    });
+        console.log(this.dataSource.data);
+      });
 
 
 
@@ -45,6 +46,14 @@ export class TableComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
     console.log(this.dataSource);
+  }
+
+  openDialog(id) {
+    this.dialog.open(ItemDetailComponent, {
+      data: {
+        animal: 'panda'
+      }
+    });
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,6 +10,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
 import 'rxjs/add/observable/timer';
+import { MAT_DIALOG_DATA } from '@angular/material';
+
+
 
 
 @Component({
@@ -26,18 +29,21 @@ export class ItemDetailComponent implements OnInit {
 
 
 
-  constructor(public http: HttpClient, public route: ActivatedRoute) { }
+  constructor(public http: HttpClient, /* public route: ActivatedRoute, */ @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    console.log("HALLO");
+    console.log(this.data);
+    /* this.sub = this.route.params.subscribe(params => {
       this.id = params['id'] - 1;
 
-    });
+    }); */
 
     this.items = this.getItems()
-      .subscribe((data) => {
-        this.items = data.items[this.id];
+      .subscribe((dataStuff) => {
+        console.log(this.data);
+        this.items = dataStuff.items[this.data];
 
       });
   }
