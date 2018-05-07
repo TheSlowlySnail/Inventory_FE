@@ -2,6 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
+import { ItemClass } from '../ItemClass';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+
+import 'rxjs/add/observable/timer';
+
+
 @Component({
   selector: 'shl-item-detail',
   templateUrl: './item-detail.component.html',
@@ -10,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ItemDetailComponent implements OnInit {
 
   items: any = [];
-  name: any = 'Hallo Welt';
+  name: any;
   id: number;
   sub: any;
 
@@ -25,18 +35,33 @@ export class ItemDetailComponent implements OnInit {
 
     });
 
-    this.items = this.getItems().subscribe((data) => {
-      this.items = data.items[this.id];
-      //console.log(this.id);
+    this.items = this.getItems()
+      .subscribe((data) => {
+        this.items = data.items[this.id];
 
-      console.log(this.items);
-    });
+      });
   }
 
-  getItems() {
+  getItems(): Observable<any> {
     return this.http.get('http://127.0.0.1:8000/api/items');
 
   }
 
 
+}
+
+export interface ItemIF {
+  id: number;
+  barcode: string;
+  name: string;
+  description?: string;
+  type?: string;
+  room?: string;
+  status?: any;
+  annotation?: string;
+  image?: string;
+  lend?: any;
+  manufactor: string;
+  created_at: string;
+  updated_at: string;
 }
