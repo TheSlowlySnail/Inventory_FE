@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { error } from 'protractor';
+
 
 @Injectable()
 export class ItemFormService {
@@ -11,13 +13,19 @@ export class ItemFormService {
       'Content-Type': 'application/json'
     })
   };
-
+itemWasPosted: EventEmitter<any> = new EventEmitter<any>();
   addItem(item: any) {
-    return this.http.post('http://127.0.0.1:8000/api/item', item, this.httpOptions).subscribe(
-      (result) => {
-        console.log(result);
-      }
-    );
+    return this.http.post('http://127.0.0.1:8000/api/item', item, this.httpOptions)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          debugger
+          this.itemWasPosted.emit();
+        },
+        (err) => { console.log(err); }
+      );
+
+
   }
 
 
@@ -25,7 +33,7 @@ export class ItemFormService {
     const fd = new FormData();
     fd.append('image', selectedFile, selectedFile.name);
     this.http.post('http://127.0.0.1:8000/api/store', fd)
-    .subscribe(res => console.log(res));
+      .subscribe(res => console.log(res));
   }
 
 }

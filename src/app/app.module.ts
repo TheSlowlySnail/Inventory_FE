@@ -11,7 +11,7 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule
 import { MatInputModule, MatTableModule } from '@angular/material';
 import { ItemFormComponent } from './item-form/item-form.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ItemFormService } from './item-form.service';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 
@@ -61,7 +61,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatCardModule,
     RouterModule.forRoot(appRoutes),
-    MatDialogModule
+    MatDialogModule,
 
   ],
   providers: [

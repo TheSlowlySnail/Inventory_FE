@@ -33,24 +33,26 @@ export class ItemDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log("HALLO");
-    console.log(this.data);
+
+    this.load(this.data);
     /* this.sub = this.route.params.subscribe(params => {
       this.id = params['id'] - 1;
 
     }); */
 
-    this.items = this.getItems()
-      .subscribe((dataStuff) => {
-        console.log(this.data);
-        this.items = dataStuff.items[this.data];
+    // this.items = this.getItems(this.data)
+    //   .subscribe((dataStuff) => {
+    //     console.log(this.data);
+    //     debugger
+    //     this.items = dataStuff.items[this.data];
 
-      });
+    //   });
   }
 
-  getItems(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/items');
-
+  async load(value) {
+    let values = await this.http.get('http://127.0.0.1:8000/api/items').toPromise();
+   this.items =values.items.find(i=>i.name);
+   this.items.image="bild.jpg";
   }
 
 
