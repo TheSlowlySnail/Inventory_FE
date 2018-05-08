@@ -27,7 +27,7 @@
 
   <ng-container matColumnDef="dialog">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Details</mat-header-cell>
-    <mat-cell *matCellDef="let items" (click)="openDialog(1)">{{items.id}}</mat-cell>
+    <mat-cell *matCellDef="let items" (click)="openDialog(items.id)">{{items.id}}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

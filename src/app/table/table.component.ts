@@ -37,7 +37,7 @@ export class TableComponent implements OnInit, AfterViewInit {
         console.log(this.dataSource.data);
       });
   }
- 
+
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -58,7 +58,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   openDialog(id) {
     this.dialog.open(ItemDetailComponent, {
       data: {
-        animal: 'panda'
+        compId: id
       }
     });
   }

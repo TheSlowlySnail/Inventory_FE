@@ -1,12 +1,12 @@
 <form class="item-form">
   <mat-form-field>
-    <input matInput name="barcode" placeholder="Barcode" value="IN SH " [(ngModel)]="barcode">
+    <input matInput name="barcode" placeholder="Barcode" value="IN SH " [(ngModel)]="barcode" required>
   </mat-form-field>
 
   {{barcode}}
   <br>
   <mat-form-field>
-    <input matInput name="itemName" placeholder="Item Name" [(ngModel)]="name">
+    <input matInput name="itemName" placeholder="Item Name" [(ngModel)]="name" required>
   </mat-form-field>
   <br>
 
