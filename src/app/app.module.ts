@@ -20,12 +20,15 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthService } from './auth.service';
 
 
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
   { path: 'form', component: ItemFormComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'items', children: [
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
     AppComponent,
     TableComponent,
     ItemFormComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     ItemFormService,
-    { provide: MAT_DIALOG_DATA, useValue: {}       }   ],
-  bootstrap: [AppComponent]
+    { provide: MAT_DIALOG_DATA, useValue: {}       },
+  AuthService   ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

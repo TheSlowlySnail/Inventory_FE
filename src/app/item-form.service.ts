@@ -13,13 +13,17 @@ export class ItemFormService {
       'Content-Type': 'application/json'
     })
   };
-itemWasPosted: EventEmitter<void> = new EventEmitter<void>();
+
+
+  itemWasPosted: EventEmitter<void> = new EventEmitter<void>();
+
+
   addItem(item: any) {
     return this.http.post('http://127.0.0.1:8000/api/item', item, this.httpOptions)
       .subscribe(
         (result) => {
           console.log(result);
-          debugger
+
           this.itemWasPosted.emit();
         },
         (err) => { console.log(err); }
