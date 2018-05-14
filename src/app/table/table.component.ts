@@ -20,13 +20,15 @@ export class TableComponent implements OnInit, AfterViewInit {
   displayedColumns = ['barcode', 'name', 'link', 'dialog'];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
-  subscription= [];
+  subscription = [];
 
   ngOnInit() {
     this.load();
     this.subscription.push(
-      this.itemFormService.itemWasPosted.subscribe(() => {debugger;this.load();})
+      this.itemFormService.itemWasPosted.subscribe(() => {this.load();})
     );
+
+    this.dataSource.sort = this.sort;
   }
 
   load() {
