@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthService } from './auth.service';
+import { SigninComponent } from './signin/signin.component';
 
 
 
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
   { path: 'form', component: ItemFormComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SigninComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'items', children: [
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     TableComponent,
     ItemFormComponent,
     ItemDetailComponent,
-    SignUpComponent
+    SignUpComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

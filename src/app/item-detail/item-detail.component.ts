@@ -54,7 +54,7 @@ export class ItemDetailComponent implements OnInit {
 
     let values = await this.http.get('http://127.0.0.1:8000/api/items').toPromise();
 
-    this.items = values.items.find(i => i.id == value.compId);
+    //this.items = values.items.find(i => i.id == value.compId);
 
 
     //this.items.image = "bild.jpg";
