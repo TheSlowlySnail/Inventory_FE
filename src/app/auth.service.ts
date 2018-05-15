@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { map} from 'rxjs/operators/map';
+import { map } from 'rxjs/operators/map';
 import { _do } from 'rxjs/operator/do';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
@@ -19,8 +19,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   signup(username: string, email: string, password: string, c_password: string) {
-    return this.http.post('http://127.0.0.1:8000/api/userRegister', { name: username, email: email, password: password,
-    c_password: c_password  },
+    return this.http.post('http://127.0.0.1:8000/api/userRegister', {
+      name: username, email: email, password: password,
+      c_password: c_password
+    },
       this.httpOptions).subscribe(
         respone => { console.log(respone); }
       );
@@ -28,12 +30,21 @@ export class AuthService {
 
   }
 
-  signin(email: string, password: string) {
-    return this.http.post<TokenJson>('http://127.0.0.1:8000/api/userLogin',
-      { email: email, password: password },
-    this.httpOptions);
+  login(email: string, password: string) {
+    return this.http.post('http://127.0.0.1:8000/api/userLogin',
+      { email: email, password: password }, this.httpOptions)
+      // this is just the HTTP call,
+      // we still need to handle the reception of the token
+      .shareReplay();
+  }
+
+  signin: Observable<TokenJson> (email: string, password: string) {
+    return this.http.post('http://127.0.0.1:8000/api/userLogin',
+      { email: email, password: password }, this.httpOptions);
 
   }
+
+
 
 
 
