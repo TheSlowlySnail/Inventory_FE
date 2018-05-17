@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
-import { ItemClass } from '../ItemClass';
+
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -52,9 +52,11 @@ export class ItemDetailComponent implements OnInit {
   async load(value) {
     console.log(value);
 
-    let values = await this.http.get('http://127.0.0.1:8000/api/items').toPromise();
+    let values= await this.http.get<Item>('http://127.0.0.1:8000/api/items').toPromise();
 
-    //this.items = values.items.find(i => i.id == value.compId);
+    this.items = values.items.find(i => i.id == value.compId);
+
+    console.log(values);
 
 
     //this.items.image = "bild.jpg";
@@ -62,19 +64,38 @@ export class ItemDetailComponent implements OnInit {
 
 
 }
-
-export interface ItemIF {
-  id: number;
+export class Item {
+  constructor(){}
+  items:{
+  annotation: string;
   barcode: string;
-  name: string;
-  description?: string;
-  type?: string;
-  room?: string;
-  status?: any;
-  annotation?: string;
-  image?: string;
-  lend?: any;
-  manufactor: string;
   created_at: string;
-  updated_at: string;
+  description: string;
+  id: string;
+  image: string;
+  lend: string;
+  manufactor: string;
+  name: string;
+  room: string;
+  status: string;
+  type: string;
+  }
+
 }
+
+// calss ItemIF {
+//   constructor(){}
+//   id: number;
+//   barcode: string;
+//   name: string;
+//   description?: string;
+//   type?: string;
+//   room ? : string;
+//   status ? : any;
+//   annotation ? : string;
+//   image ? : string;
+//   lend ? : any;
+//   manufactor: string;
+//   created_at: string;
+//   updated_at: string;
+// }

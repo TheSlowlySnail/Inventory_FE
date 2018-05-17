@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { TokenClass } from './TokenClass';
 
 @Component({
   selector: 'shl-signin',
@@ -18,10 +21,18 @@ export class SigninComponent implements OnInit {
   }
 
   onSignIn() {
-    this.authService.signin(this.email, this.password)
+    this.authService.login(this.email, this.password)
     .subscribe(
-      resp => console.log(resp)
+      (resp: TokenClass) => {
+
+        localStorage.setItem('userToken', resp.success.token);
+      },
+      (err: HttpErrorResponse) => console.log(err)
     );
   }
 
 }
+
+
+
+

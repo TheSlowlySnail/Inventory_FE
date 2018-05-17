@@ -12,7 +12,7 @@ export class AuthService {
   httpOptions = {
     headers: new HttpHeaders({
       /* 'Content-Type': 'application/json', */
-      'X-Requested-With': 'XMLHttpRequest',
+      // 'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json'
     })
   };
@@ -38,11 +38,7 @@ export class AuthService {
       .shareReplay();
   }
 
-  signin: Observable<TokenJson> (email: string, password: string) {
-    return this.http.post('http://127.0.0.1:8000/api/userLogin',
-      { email: email, password: password }, this.httpOptions);
 
-  }
 
 
 
