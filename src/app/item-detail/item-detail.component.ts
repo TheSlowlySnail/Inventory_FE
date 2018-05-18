@@ -52,7 +52,7 @@ export class ItemDetailComponent implements OnInit {
   async load(value) {
     console.log(value);
 
-    let values= await this.http.get<Item>('http://127.0.0.1:8000/api/items').toPromise();
+    let values= await this.http.get<any>('http://127.0.0.1:8000/api/items').toPromise();
 
     this.items = values.items.find(i => i.id == value.compId);
 
@@ -65,8 +65,8 @@ export class ItemDetailComponent implements OnInit {
 
 }
 export class Item {
-  constructor(){}
-  items:{
+  constructor() {}
+  items: {
   annotation: string;
   barcode: string;
   created_at: string;

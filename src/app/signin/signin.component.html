@@ -1,12 +1,21 @@
 <form class="item-form">
 
   <mat-form-field>
-    <input matInput name="email" placeholder="Email" [(ngModel)]="email" required>
+<input matInput name="email" placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" required>
+
+
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is
+      <strong>required</strong>
+    </mat-error>
   </mat-form-field>
   <br>
 
   <mat-form-field>
-    <input matInput name="password" placeholder="Password" [(ngModel)]="password" required>
+    <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="password" required>
   </mat-form-field>
   <br>
 
@@ -16,7 +25,6 @@
 
 
 
-  <button mat-raised-button color="green" (click)='onSignIn()'>Sign up</button>
+  <button mat-raised-button color="green" (click)='onSignIn()'>Sign in</button>
 
 </form>
-
