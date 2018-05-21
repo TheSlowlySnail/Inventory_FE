@@ -4,11 +4,19 @@
     // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "chrome",
             "request": "launch",
             "name": "Chrome gegen localhost starten",
-            "url": "http://localhost:8080",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome mit SignIn",
+            "url": "http://localhost:4200/signin",
             "webRoot": "${workspaceFolder}"
         }
     ]

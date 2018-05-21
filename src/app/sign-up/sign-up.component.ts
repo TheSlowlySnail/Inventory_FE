@@ -12,15 +12,18 @@ export class SignUpComponent implements OnInit {
   constructor(private authService: AuthService) { }
   public username: string;
   public email: string;
+  public role: string;
   public password: string;
   public c_password: string;
+  public firstname: string;
+  public lastname: string;
 
 
   ngOnInit() {
   }
 
   onSignup() {
-    this.authService.signup(this.username, this.email, this.password, this.c_password);
+    this.authService.signup(this.username, this.email, this.firstname, this.lastname, this.role, this.password, this.c_password);
   }
 
 }

@@ -15,6 +15,14 @@
   <br>
 
   <mat-form-field>
+    <input matInput name="firstname" placeholder="firstname" [(ngModel)]="firstname" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="lastname" placeholder="lastname" [(ngModel)]="lastname" required>
+  </mat-form-field>
+
+  <mat-form-field>
     <input matInput name="password" placeholder="Password" [(ngModel)]="password" required>
   </mat-form-field>
   <br>
@@ -28,7 +36,7 @@
 
 
 
-<button mat-raised-button color="green" (click)='login()'>Sign up</button>
+<button mat-raised-button color="green" (click)='onSignup()'>Sign up</button>
 
 </form>
 

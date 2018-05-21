@@ -31,17 +31,18 @@ export class SigninComponent implements OnInit {
 
   onSignIn() {
     this.authService.login(this.email, this.password)
-    .subscribe(
-      (resp: TokenClass) => {
+      .subscribe(
+        (resp: TokenClass) => {
 
-        localStorage.setItem('userToken', resp.success.token);
-        this.router.navigate(['/dash']);
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-        this.isLoginError = true;
-      }
-    );
+          localStorage.setItem('userToken', resp.success.token);
+
+          this.router.navigate(['/dash']);
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err);
+          this.isLoginError = true;
+        }
+      );
   }
 
 }

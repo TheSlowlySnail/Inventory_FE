@@ -25,12 +25,14 @@ import { AuthService } from './auth.service';
 import { SigninComponent } from './signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserService } from './user.service';
 
 
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
-  { path: 'dash', component: DashboardComponent , canActivate: [AuthGuard]},
+  { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'form', component: ItemFormComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     ItemDetailComponent,
     SignUpComponent,
     SigninComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -79,9 +82,9 @@ const appRoutes: Routes = [
 
   ],
   providers: [
-    ItemFormService,
-    { provide: MAT_DIALOG_DATA, useValue: {}       },
-  AuthService, AuthGuard   ],
+    ItemFormService, UserService,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

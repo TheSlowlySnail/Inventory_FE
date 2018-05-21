@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'shl-dashboard',
@@ -7,10 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  userClaims: any;
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getUser().subscribe((data: any) => {
+      this.userClaims = data;
+      console.log(data.success);
+    });
   }
 
   onLogOut() {

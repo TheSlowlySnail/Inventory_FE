@@ -25,7 +25,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.load();
     this.subscription.push(
-      this.itemFormService.itemWasPosted.subscribe(() => {this.load();})
+      this.itemFormService.itemWasPosted.subscribe(() => { this.load(); })
     );
 
     this.dataSource.sort = this.sort;
