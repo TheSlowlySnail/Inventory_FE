@@ -1,0 +1,55 @@
+<form class="user-form">
+  <mat-form-field>
+    <input matInput name="studentid" placeholder="Student ID" [(ngModel)]="studentid" required>
+  </mat-form-field>
+
+  {{barcode}}
+  <br>
+  <mat-form-field>
+    <input matInput name="itemName" placeholder="Item Name" [(ngModel)]="name" required>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <textarea matInput name="description" placeholder="Beschreibung" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+      [(ngModel)]="description"></textarea>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <mat-select [(value)]="type" placeholder="Typ">
+      <mat-option value="light">Leuchtmitte</mat-option>
+      <mat-option value="tool">Gerät</mat-option>
+      <mat-option value="something">Irgendwas</mat-option>
+      <mat-option value="anything">nochwas</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-select [(value)]="room" placeholder="Raum">
+      <mat-option value="workplace">Arbeitsplatz</mat-option>
+      <mat-option value="kitchen">Küche</mat-option>
+      <mat-option value="bath">Bad</mat-option>
+      <mat-option value="iot">IOT-Raum</mat-option>
+      <mat-option value="media">Medienraum</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <textarea matInput name="annotation" placeholder="Anmerkung" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+      [(ngModel)]="annotation"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="manufactor" placeholder="Hersteller" [(ngModel)]="manufactor">
+  </mat-form-field>
+
+  <br>
+  <input type="file" (change)='onFileSelected($event)' name="image" id="image" type="file">
+  <br>
+  <button mat-raised-button color="green" (click)='onSubmit()'>Item speichern</button>
+</form>
+

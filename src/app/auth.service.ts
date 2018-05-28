@@ -18,11 +18,11 @@ export class AuthService {
   };
   constructor(private http: HttpClient) { }
 
-  signup(username: string, email: string, firstname: string, lastname: string, role: string = 'user'
+  signup(studentid: string, email: string, firstname: string, lastname: string, role: string = 'user'
     , password: string, c_password: string) {
 
     return this.http.post('http://127.0.0.1:8000/api/userRegister', {
-      name: username, email: email, firstname: firstname, lastname: lastname, role: role, password: password,
+      studentid: studentid, email: email, firstname: firstname, lastname: lastname, role: role, password: password,
       c_password: c_password
     },
       this.httpOptions).subscribe(
@@ -41,19 +41,7 @@ export class AuthService {
       .shareReplay();
   }
 
-  editUser(id: number, username: string, email: string, firstname: string, lastname: string, role: string = 'user'
-    , password: string) {
 
-    return this.http.put('http://127.0.0.1:8000/api/user/' + id, {
-      name: username, email: email, firstname: firstname, lastname: lastname, role: role, password: password
-    },
-      this.httpOptions).subscribe(
-        respone => { console.log(respone); },
-        err => console.log(err)
-      );
-
-
-  }
 
 
 

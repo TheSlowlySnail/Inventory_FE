@@ -19,5 +19,28 @@ export class UserService {
   getUser() {
     return this.http.post(this.rootUrl + '/userDetails', null, this.httpOptions);
   }
+  getUsers() {
+    return this.http.get(this.rootUrl + '/users');
+
+  }
+
+  editUser(id: number, personid: string, email: string, firstname: string, lastname: string, role: string = 'user'
+    , password: string, annotation: string) {
+
+    return this.http.put('http://127.0.0.1:8000/api/user/' + id, {
+      personid: personid, email: email, firstname: firstname, lastname: lastname,
+      role: role, password: password, annotation: annotation
+    },
+      this.httpOptions).subscribe(
+        respone => { console.log(respone); },
+        err => console.log(err)
+      );
+
+
+  }
+
+  deleteUser(id) {
+    return this.http.delete('http://127.0.0.1:8000/api/user/' + id);
+  }
 
 }

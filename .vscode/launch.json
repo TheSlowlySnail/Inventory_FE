@@ -4,7 +4,7 @@
     // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+
         {
             "type": "chrome",
             "request": "launch",
@@ -18,6 +18,13 @@
             "name": "Chrome mit SignIn",
             "url": "http://localhost:4200/signin",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+          "type": "chrome",
+          "request": "launch",
+          "name": "Chrome mit UserList",
+          "url": "http://localhost:4200/userlist",
+          "webRoot": "${workspaceFolder}"
         }
     ]
 }

@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class SignUpComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
-  public username: string;
+  public studentid: string;
   public email: string;
   public role: string;
   public password: string;
@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup() {
-    this.authService.signup(this.username, this.email, this.firstname, this.lastname, this.role, this.password, this.c_password);
+    this.authService.signup(this.studentid, this.email, this.firstname, this.lastname, this.role, this.password, this.c_password);
   }
 
 }

@@ -27,6 +27,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserService } from './user.service';
+import { ItemEditComponent } from './item-edit/item-edit.component';
+import { UserListComponent } from './user-list/user-list.component';
+
+import { UserCreateComponent } from './user-create/user-create.component';
+import { UserClass } from './UserClass';
 
 
 
@@ -36,6 +41,10 @@ const appRoutes: Routes = [
   { path: 'form', component: ItemFormComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
+  { path: 'userlist', component: UserListComponent },
+  { path: 'edituser', component: EditUserComponent },
+  { path: 'item', component: ItemFormComponent },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'items', children: [
@@ -59,7 +68,13 @@ const appRoutes: Routes = [
     SignUpComponent,
     SigninComponent,
     DashboardComponent,
-    EditUserComponent
+    EditUserComponent,
+    ItemEditComponent,
+    UserListComponent,
+
+    UserCreateComponent,
+
+
   ],
   imports: [
     BrowserModule,

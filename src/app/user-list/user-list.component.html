@@ -1,0 +1,73 @@
+<!-- <div *ngFor="let item of items?.items">
+  <div>{{item.name}}</div>
+
+</div> -->
+
+<div>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+<mat-table [dataSource]='dataSource'>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+    <mat-cell *matCellDef="let users">{{users.email}}</mat-cell>
+
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let users">{{users.name}}</mat-cell>
+
+
+  </ng-container>
+
+  <ng-container matColumnDef="firstname">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</mat-header-cell>
+    <mat-cell *matCellDef="let users">{{users.firstname}}</mat-cell>
+
+
+  </ng-container>
+
+  <ng-container matColumnDef="lastname">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Lastname</mat-header-cell>
+    <mat-cell *matCellDef="let users">{{users.lastname}}</mat-cell>
+
+
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
+    <mat-cell *matCellDef="let users">{{users.role}}</mat-cell>
+
+
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+    <mat-cell *matCellDef="let users">EDIT</mat-cell>
+
+
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+<mat-cell *matCellDef="let users">
+  <a (click)="delete(users.id)">DELETE</a>
+</mat-cell>
+
+
+
+  </ng-container>
+
+
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
+<router-outlet></router-outlet>
