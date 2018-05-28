@@ -7,7 +7,14 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatToolbar, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatToolbar,
+  MatToolbarModule
+} from '@angular/material';
 import { MatInputModule, MatTableModule } from '@angular/material';
 import { ItemFormComponent } from './item-form/item-form.component';
 
@@ -33,31 +40,34 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserClass } from './UserClass';
 
-
-
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
-  { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard] },
+  {
+    path: 'dash',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'edituser/:id', component: EditUserComponent },
+      {
+        path: 'items',
+        children: [
+          {
+            path: '',
+            component: TableComponent,
+            children: [{ path: 'detail/:id', component: ItemDetailComponent }]
+          }
+        ]
+      }
+    ]
+  },
   { path: 'form', component: ItemFormComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'userlist', component: UserListComponent },
-  { path: 'edituser', component: EditUserComponent },
   { path: 'item', component: ItemFormComponent },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {
-    path: 'items', children: [
-      {
-        path: 'list', component: TableComponent, children: [
-          { path: 'detail/:id', component: ItemDetailComponent }
-        ]
-      }
-    ]
-  }
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
-
 
 @NgModule({
   declarations: [
@@ -72,9 +82,7 @@ const appRoutes: Routes = [
     ItemEditComponent,
     UserListComponent,
 
-    UserCreateComponent,
-
-
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -94,12 +102,14 @@ const appRoutes: Routes = [
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule
-
   ],
   providers: [
-    ItemFormService, UserService,
+    ItemFormService,
+    UserService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    AuthService, AuthGuard],
-  bootstrap: [AppComponent],
+    AuthService,
+    AuthGuard
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

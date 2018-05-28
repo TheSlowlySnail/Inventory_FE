@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Person } from './edit-user/edit-user.component';
 
 @Injectable()
 export class UserService {
@@ -16,8 +17,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser() {
-    return this.http.post(this.rootUrl + '/userDetails', null, this.httpOptions);
+  getUser(id: number) {
+  debugger
+    return this.http.get(this.rootUrl + '/user/' + id);
   }
   getUsers() {
     return this.http.get(this.rootUrl + '/users');

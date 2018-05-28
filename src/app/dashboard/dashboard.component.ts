@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
+import { PersonDto } from '../user-list/user-list.component';
 
 @Component({
   selector: 'shl-dashboard',
@@ -13,9 +14,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser().subscribe((data: any) => {
-      this.userClaims = data;
-      console.log(data.success);
+      this.userClaims = data.persons;
+      this.userService.user = data.persons;
+      console.log(data.persons);
     });
+
   }
 
   onLogOut() {

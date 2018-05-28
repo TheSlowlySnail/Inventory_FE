@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
+import { PersonModel } from '../user-list/user-list.component';
+import { ActivatedRoute, Params } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'shl-edit-user',
@@ -17,13 +20,63 @@ export class EditUserComponent implements OnInit {
   public lastname: string;
   public annotation: string;
 
-  constructor(private userService: UserService) { }
+  @Input() public userJson: IPersonArray;
+  user: Person = new Person();
 
+  constructor(
+    private userService: UserService,
+    private router: ActivatedRoute,
+    private http: HttpClient
+  ) {}
+  subscribtions = [];
+  test;
   ngOnInit() {
+    this.subscribtions.push(
+      this.router.params.subscribe((params: Params) => {
+        this.loadPerson(+params['id']);
+      })
+    );
+    console.log(this.userJson);
+  }
+
+  async loadPerson(personId: number) {
+    try {
+      let val = await this.http
+        .get('http://127.0.0.1:8000/api/user/' + personId)
+        .toPromise();
+      this.user = val.persons;
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   onChangeData() {
-    this.userService.editUser(1, this.personid, this.email, this.firstname, this.lastname, this.role, this.password, this.annotation);
+    this.userService.editUser(
+      1,
+      this.personid,
+      this.email,
+      this.firstname,
+      this.lastname,
+      this.role,
+      this.password,
+      this.annotation
+    );
   }
+}
+export class Person {
+  id: number;
+  name: string;
+  personid: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  role: string;
+  annotation: string;
+  created_at: string;
+  updated_at: string;
+  password: string;
+}
 
+export interface IPersonArray {
+  persons: Person[];
 }

@@ -13,12 +13,13 @@ import { UserClass } from '../UserClass';
 })
 export class UserListComponent implements OnInit {
 
-  users: UserClass = [];
+  users: any = [];
   displayedColumns = ['email', 'name', 'firstname', 'lastname', 'role', 'edit', 'delete'];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
   subscription = [];
 
+  personsModel: PersonModel[] = [];
   constructor(public http: HttpClient, private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -27,15 +28,17 @@ export class UserListComponent implements OnInit {
 
   load() {
     this.userService.getUsers().subscribe(
-      (data) => {
-        this.users = <UserClass>data;
+      (data: Array<PersonDto>) => {
+        this.users = data;
         console.log(data);
+        this.personsModel = data.map(personDto => new PersonModel(personDto));
+        // this.personsModel = this.personsModel.sort((a,b)=>{(a.name<b.name)?-1:1});                            
         this.dataSource = new MatTableDataSource(this.users.persons);
         console.log(this.dataSource);
       }
     );
   }
-
+ 
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -51,4 +54,35 @@ export class UserListComponent implements OnInit {
 
 
 
+}
+
+
+export class PersonDto {
+  id: number;
+  name: string;
+  personid: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  role: string;
+  annotation: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IPersonArray {
+  persons: PersonDto[];
+}
+
+// var a=new Person();
+export class PersonModel extends PersonDto {
+  constructor(dto?: PersonDto) {
+    super();
+    if(dto){
+    return {
+      ...dto,
+      fullName: dto.firstname + " " + dto.lastname
+    }}
+  }
+  fullName: string;
 }

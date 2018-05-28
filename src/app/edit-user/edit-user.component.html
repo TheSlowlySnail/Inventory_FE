@@ -1,12 +1,11 @@
-<form class="item-form">
+ <form class="item-form" *ngIf="user">
 <mat-form-field>
-  <input matInput name="email" placeholder="Email" [(ngModel)]="email" required>
+   <input matInput name="email" placeholder="Email" [(ngModel)]="user.email" required>
 </mat-form-field>
 <br>
 
-
   <mat-form-field>
-    <input matInput name="Matrikelnumber" placeholder="personid" [(ngModel)]="personid" required>
+    <input matInput name="Matrikelnumber" placeholder="personid" [(ngModel)]="user.personid" required>
   </mat-form-field>
 
 
@@ -14,26 +13,26 @@
 
 
   <mat-form-field>
-    <input matInput name="firstname" placeholder="firstname" [(ngModel)]="firstname" required>
+    <input matInput name="firstname" placeholder="firstname" [(ngModel)]="user.firstname" required>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="lastname" placeholder="lastname" [(ngModel)]="lastname" required>
-  </mat-form-field>
-  <br>
-
-  <mat-form-field>
-    <input matInput name="password" placeholder="Password" [(ngModel)]="password" type="password" required>
+    <input matInput name="lastname" placeholder="lastname" [(ngModel)]="user.lastname" required>
   </mat-form-field>
   <br>
 
   <mat-form-field>
-    <input matInput name="c_password" placeholder="c_password" [(ngModel)]="c_password" type="password<!--  -->" required>
+    <input matInput name="password" placeholder="Password" [(ngModel)]="user.password" type="password" required>
   </mat-form-field>
   <br>
 
   <mat-form-field>
-    <input matInput name="annotation" placeholder="annotation" [(ngModel)]="annotation">
+    <input matInput name="c_password" placeholder="c_password" [(ngModel)]="user.c_password" type="password" required>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <input matInput name="annotation" placeholder="annotation" [(ngModel)]="user.annotation">
   </mat-form-field>
   <br>
 
