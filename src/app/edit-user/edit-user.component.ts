@@ -40,7 +40,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscribtions.map(s => s.unsubscribe());
-
   }
 
   async loadPerson(personId: number) {
@@ -55,15 +54,18 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   onChangeData() {
+    console.log(this.userService.user.firstname);
+    //FIXME: User ID sollte ich mir vom Service holen können, der Rest muss aus der Tabelle kommen.
     this.userService.editUser(
-      1,
-      this.personid,
-      this.email,
-      this.firstname,
-      this.lastname,
-      this.role,
-      this.annotation
+      this.userService.user.id,
+      this.userService.user.personid,
+      this.userService.user.email,
+      this.userService.user.firstname,
+      this.userService.user.lastname,
+      this.userService.user.role,
+      this.userService.user.annotation
     );
+    debugger;
   }
 }
 export class Person {

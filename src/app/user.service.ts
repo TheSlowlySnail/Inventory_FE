@@ -4,7 +4,7 @@ import { Person } from './edit-user/edit-user.component';
 
 @Injectable()
 export class UserService {
-  public user: Person;
+  public user: any;
 
   rootUrl = 'http://127.0.0.1:8000/api';
   httpOptions = {
