@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
 import { PersonModel } from '../user-list/user-list.component';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class EditUserComponent implements OnInit, OnDestroy {
   public username: string;
   private personid: string;
   public email: string;
@@ -28,20 +28,24 @@ export class EditUserComponent implements OnInit {
     private router: ActivatedRoute,
     private http: HttpClient
   ) {}
-  subscribtions = [];
+  public subscribtions = [];
   test;
   ngOnInit() {
     this.subscribtions.push(
       this.router.params.subscribe((params: Params) => {
-        this.loadPerson(+params['id']);
+        this.loadPerson(this.userService.user.id);
       })
     );
     console.log(this.userJson);
   }
+  ngOnDestroy(): void {
+    this.subscribtions.map(s => s.unsubscribe());
+
+  }
 
   async loadPerson(personId: number) {
     try {
-      let val = await this.http
+      let val: any = await this.http
         .get('http://127.0.0.1:8000/api/user/' + personId)
         .toPromise();
       this.user = val.persons;

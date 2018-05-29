@@ -15,6 +15,6 @@ export interface UserClass {
     role: string;
     created_at: string;
     updated_at: string;
-    }
+    };
 
 }

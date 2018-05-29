@@ -52,34 +52,34 @@ export class ItemDetailComponent implements OnInit {
   async load(value) {
     console.log(value);
 
-    let values= await this.http.get<any>('http://127.0.0.1:8000/api/items').toPromise();
+    let values = await this.http.get<any>('http://127.0.0.1:8000/api/items').toPromise();
 
     this.items = values.items.find(i => i.id == value.compId);
 
     console.log(values);
 
 
-    //this.items.image = "bild.jpg";
+    // this.items.image = "bild.jpg";
   }
 
 
 }
 export class Item {
-  constructor() {}
+  constructor() { }
   items: {
-  annotation: string;
-  barcode: string;
-  created_at: string;
-  description: string;
-  id: string;
-  image: string;
-  lend: string;
-  manufactor: string;
-  name: string;
-  room: string;
-  status: string;
-  type: string;
-  }
+    annotation: string;
+    barcode: string;
+    created_at: string;
+    description: string;
+    id: string;
+    image: string;
+    lend: string;
+    manufactor: string;
+    name: string;
+    room: string;
+    status: string;
+    type: string;
+  };
 
 }
 

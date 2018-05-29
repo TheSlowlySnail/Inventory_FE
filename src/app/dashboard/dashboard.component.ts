@@ -1,29 +1,50 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { PersonDto } from '../user-list/user-list.component';
+import {
+  IPersonArray,
+  EditUserComponent
+} from '../edit-user/edit-user.component';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'shl-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   userClaims: any;
-  constructor(private router: Router, private userService: UserService) { }
+  public subscribtion: ISubscription;
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private editUserComponent: EditUserComponent
+  ) {}
 
   ngOnInit() {
-    this.userService.getUser().subscribe((data: any) => {
-      this.userClaims = data.persons;
-      this.userService.user = data.persons;
-      console.log(data.persons);
-    });
+    this.subscribtion = this.userService
+      .getUserDetail()
+      .subscribe((data: IPersonArray) => {
+        this.userClaims = data.persons;
+        this.userService.user = data.persons;
+        console.log('this.userService.user');
+        console.log(data.persons);
+        console.log(localStorage.getItem('userToken'));
+      });
+  }
 
+  ngOnDestroy() {
+    this.subscribtion.unsubscribe();
   }
 
   onLogOut() {
     localStorage.removeItem('userToken');
+    console.log('delete usertoken');
+    console.log(localStorage.getItem('userToken'));
     this.router.navigate(['/signin']);
+    this.editUserComponent.subscribtions = [];
+    console.log(this.editUserComponent.subscribtions);
+    this.userService.user = {};
   }
-
 }

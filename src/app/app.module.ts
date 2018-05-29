@@ -106,6 +106,7 @@ const appRoutes: Routes = [
   providers: [
     ItemFormService,
     UserService,
+    EditUserComponent,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     AuthService,
     AuthGuard
