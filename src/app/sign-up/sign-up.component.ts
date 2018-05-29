@@ -23,7 +23,8 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup() {
-    this.authService.signup(this.studentid, this.email, this.firstname, this.lastname, this.role, this.password, this.c_password);
+    console.log('onSignUp');
+    this.authService.signup(this.studentid, this.email, this.firstname, this.lastname, 'user', this.password, this.c_password, '');
   }
 
 }

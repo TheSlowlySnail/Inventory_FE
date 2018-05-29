@@ -62,7 +62,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
       this.firstname,
       this.lastname,
       this.role,
-      this.password,
       this.annotation
     );
   }

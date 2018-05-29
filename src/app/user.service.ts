@@ -4,14 +4,14 @@ import { Person } from './edit-user/edit-user.component';
 
 @Injectable()
 export class UserService {
-  public user = {};
+  public user: Person;
 
   rootUrl = 'http://127.0.0.1:8000/api';
   httpOptions = {
     headers: new HttpHeaders({
       /* 'Content-Type': 'application/json', */
       // 'X-Requested-With': 'XMLHttpRequest',
-      // 'Content-Type': 'application/json'
+       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('userToken')}`
     })
   };
@@ -24,11 +24,18 @@ export class UserService {
     return this.http.get(this.rootUrl + '/user/' + id);
   }
   getUsers() {
+
     return this.http.get(this.rootUrl + '/users');
   }
 
   // Nur mit Token erreichbar, deswegen POST
   getUserDetail() {
+    this.httpOptions = { headers: new HttpHeaders({
+        /* 'Content-Type': 'application/json', */
+        // 'X-Requested-With': 'XMLHttpRequest',
+        // 'Content-Type': 'application/json'
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }) };
     console.log('getUserDetail');
     console.log(localStorage.getItem('userToken'));
     console.log('HTTP OPTION');
@@ -48,7 +55,6 @@ export class UserService {
     firstname: string,
     lastname: string,
     role: string = 'user',
-    password: string,
     annotation: string
   ) {
     return this.http
@@ -60,7 +66,6 @@ export class UserService {
           firstname: firstname,
           lastname: lastname,
           role: role,
-          password: password,
           annotation: annotation
         },
         this.httpOptions

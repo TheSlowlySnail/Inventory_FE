@@ -4,7 +4,8 @@ import { UserService } from '../user.service';
 import { PersonDto } from '../user-list/user-list.component';
 import {
   IPersonArray,
-  EditUserComponent
+  EditUserComponent,
+  Person
 } from '../edit-user/edit-user.component';
 import { ISubscription } from 'rxjs/Subscription';
 
@@ -45,6 +46,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.router.navigate(['/signin']);
     this.editUserComponent.subscribtions = [];
     console.log(this.editUserComponent.subscribtions);
-    this.userService.user = {};
+    this.userService.user = new Person();
   }
 }
