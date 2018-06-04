@@ -12,7 +12,7 @@ export class UserService {
     headers: new HttpHeaders({
       /* 'Content-Type': 'application/json', */
       // 'X-Requested-With': 'XMLHttpRequest',
-       'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('userToken')}`
     })
   };
@@ -25,18 +25,19 @@ export class UserService {
     return this.http.get(this.rootUrl + '/user/' + id);
   }
   getUsers() {
-
     return this.http.get(this.rootUrl + '/users');
   }
 
   // Nur mit Token erreichbar, deswegen POST
   getUserDetail() {
-    this.httpOptions = { headers: new HttpHeaders({
+    this.httpOptions = {
+      headers: new HttpHeaders({
         /* 'Content-Type': 'application/json', */
         // 'X-Requested-With': 'XMLHttpRequest',
         // 'Content-Type': 'application/json'
         Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }) };
+      })
+    };
     console.log('getUserDetail');
     console.log(localStorage.getItem('userToken'));
     console.log('HTTP OPTION');
@@ -46,23 +47,26 @@ export class UserService {
       null,
       this.httpOptions
     );
-
   }
 
   editUser(
     id: number,
-    personDto: PersonDto
+    email: string,
+    firstname: string,
+    lastname: string,
+    role?: string,
+    annotation?: string
   ) {
     return this.http
       .put(
         'http://127.0.0.1:8000/api/user/' + id,
         {
-          personid: personDto.id,
-          email: personDto.email,
-          firstname: personDto.firstname,
-          lastname: personDto.lastname,
-          role: personDto.role,
-          annotation: personDto.annotation
+          personid: id,
+          email: email,
+          firstname: firstname,
+          lastname: lastname,
+          role: role,
+          annotation: annotation
         },
         this.httpOptions
       )

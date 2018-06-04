@@ -22,7 +22,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
   public lastname: string;
   public annotation: string;
 
-
   @Input() public userJson: IPersonArray;
   user: Person = new Person();
 
@@ -62,12 +61,21 @@ export class EditUserComponent implements OnInit, OnDestroy {
     // FIXME: User ID sollte ich mir vom Service holen können, der Rest muss aus dem Formular kommen.
     // this.personEditModell.email = this.email;
     // this.personEditModell.personid = this.personid;
-    // this.personEditModell.role = this.role;
+    // //  this.personEditModell.role = form.valid.role;
     // this.personEditModell.firstname = this.firstname;
     // this.personEditModell.lastname = this.lastname;
     // this.personEditModell.annotation = this.annotation;
 
-    // this.userService.editUser(this.userService.user.id, this.personEditModell);
+
+    this.email = form.value.email;
+    console.log(this.email);
+    this.personid = form.value.personid;
+    //  this.personEditModell.role = form.valid.role;
+    this.firstname = form.value.firstname;
+    this.lastname = form.value.lastname;
+    this.annotation = form.value.annotation;
+
+    this.userService.editUser(this.userService.user.id, this.email, this.firstname, this.lastname);
   }
 }
 export class Person {
