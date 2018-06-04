@@ -39,6 +39,7 @@ import { UserListComponent } from './user-list/user-list.component';
 
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserClass } from './UserClass';
+import { ItemService } from './item.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'userlist', component: UserListComponent },
   { path: 'item', component: ItemFormComponent },
+  { path: 'edititem/:id', component: ItemEditComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
@@ -107,6 +109,7 @@ const appRoutes: Routes = [
     ItemFormService,
     UserService,
     EditUserComponent,
+    ItemService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     AuthService,
     AuthGuard

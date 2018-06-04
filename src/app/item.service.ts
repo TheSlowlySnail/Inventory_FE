@@ -20,7 +20,7 @@ export class ItemService {
   }
 
   editItem(id: number, barcode: string, name: string, description: string, type: string, room: string = 'bath'
-    , status: string, annotation: string, image: string, lend: number, manufactor: string) {
+    , status: string, annotation: string, image?: string, lend?: number, manufactor?: string) {
 
     return this.http.put('http://127.0.0.1:8000/api/item/' + id, {
       barcode: barcode, name: name, description: description, type: type,

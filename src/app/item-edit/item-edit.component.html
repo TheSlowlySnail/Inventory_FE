@@ -1,1 +1,62 @@
-<p>workd</p>
+<form class="item-form" *ngIf="user" (ngSubmit)="onChangeData(itemeditform)" #itemeditform="ngForm">
+
+
+  <mat-form-field>
+    <input matInput id="barcode" name="barcode" placeholder="Barcode" [(ngModel)]="item.barcode" required>
+
+
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <input matInput name="name" placeholder="name" [(ngModel)]="item.name" required>
+
+
+
+  </mat-form-field>
+
+
+  <br>
+
+
+  <mat-form-field>
+    <input matInput name="description" placeholder="description" [(ngModel)]="item.description" required>
+
+
+
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Room">
+      <mat-option name="room" value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Status">
+      <mat-option name="status" value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <textarea matInput name="annotation" placeholder="Anmerkung" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+      [(ngModel)]="annotation"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="manufactor" placeholder="Hersteller" [(ngModel)]="manufactor">
+  </mat-form-field>
+
+  <br>
+  <input type="file" (change)='onFileSelected($event)' name="image" id="image" type="file">
+  <br>
+  <button mat-raised-button color="green" (click)='onSubmit()'>Item speichern</button>
+
+  <br>
+
+
+  <button mat-raised-button color="green" type="submit">Save Edit</button>
+
+</form>

@@ -3,10 +3,7 @@ import { Item } from '../IFitem';
 import { ItemFormService } from '../item-form.service';
 import { ItemClass } from '../ItemClass';
 
-import {FormControl, Validators} from '@angular/forms';
-
-
-
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'shl-item-form',
@@ -14,7 +11,6 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./item-form.component.scss']
 })
 export class ItemFormComponent implements OnInit {
-
   public item: ItemClass = new ItemClass();
   public barcode: string;
   public name: string;
@@ -25,14 +21,9 @@ export class ItemFormComponent implements OnInit {
   public manufactor: string;
   selectedFile: File = null;
 
-  constructor(public itemFormService: ItemFormService) {
+  constructor(public itemFormService: ItemFormService) {}
 
-  }
-
-  ngOnInit() {
-                                                                          
-
-  }
+  ngOnInit() {}
 
   onSubmit() {
     console.log('onSubmit in Item Form Component');
@@ -43,8 +34,10 @@ export class ItemFormComponent implements OnInit {
     this.item.room = this.room;
     this.item.annotation = this.annotation;
     this.item.manufactor = this.manufactor;
-    if(this.selectedFile)
-    {this.item.image = 'http://localhost:8000/images/' + this.selectedFile.name;}
+    if (this.selectedFile) {
+      this.item.image =
+        'http://localhost:8000/images/' + this.selectedFile.name;
+    }
 
     console.log(this.item);
     this.itemFormService.addItem(this.item);
@@ -55,9 +48,5 @@ export class ItemFormComponent implements OnInit {
     this.itemFormService.onUpload(this.selectedFile);
   }
 
-  uploadImage(event) {
-
-
-  }
-
+  uploadImage(event) {}
 }

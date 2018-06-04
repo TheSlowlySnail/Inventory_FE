@@ -29,9 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe((data: IPersonArray) => {
         this.userClaims = data.persons;
         this.userService.user = data.persons;
-        console.log('this.userService.user');
-        console.log(data.persons);
-        console.log(localStorage.getItem('userToken'));
+
       });
   }
 

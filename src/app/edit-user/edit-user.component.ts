@@ -59,12 +59,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
     console.log(form);
 
     // FIXME: User ID sollte ich mir vom Service holen können, der Rest muss aus dem Formular kommen.
-    // this.personEditModell.email = this.email;
-    // this.personEditModell.personid = this.personid;
-    // //  this.personEditModell.role = form.valid.role;
-    // this.personEditModell.firstname = this.firstname;
-    // this.personEditModell.lastname = this.lastname;
-    // this.personEditModell.annotation = this.annotation;
+
 
 
     this.email = form.value.email;

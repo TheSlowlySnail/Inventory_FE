@@ -30,6 +30,12 @@
     <mat-cell *matCellDef="let items" (click)="openDialog(items.id)">{{items.id}}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
+<mat-cell *matCellDef="let items" [routerLink]="['/edititem', items.id]">EDIT </mat-cell>
+
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
