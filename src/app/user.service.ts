@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Person } from './edit-user/edit-user.component';
+import { PersonDto } from './user-list/user-list.component';
 
 @Injectable()
 export class UserService {
@@ -50,23 +51,18 @@ export class UserService {
 
   editUser(
     id: number,
-    personid: string,
-    email: string,
-    firstname: string,
-    lastname: string,
-    role: string = 'user',
-    annotation: string
+    personDto: PersonDto
   ) {
     return this.http
       .put(
         'http://127.0.0.1:8000/api/user/' + id,
         {
-          personid: personid,
-          email: email,
-          firstname: firstname,
-          lastname: lastname,
-          role: role,
-          annotation: annotation
+          personid: personDto.id,
+          email: personDto.email,
+          firstname: personDto.firstname,
+          lastname: personDto.lastname,
+          role: personDto.role,
+          annotation: personDto.annotation
         },
         this.httpOptions
       )

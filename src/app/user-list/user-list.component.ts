@@ -1,7 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { MatInputModule, MatTableModule, MatTableDataSource, MatSort, MatDialog } from '@angular/material';
+import {
+  MatInputModule,
+  MatTableModule,
+  MatTableDataSource,
+  MatSort,
+  MatDialog
+} from '@angular/material';
 
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../user.service';
@@ -12,33 +18,41 @@ import { UserClass } from '../UserClass';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
   users: any = [];
-  displayedColumns = ['email', 'name', 'firstname', 'lastname', 'role', 'edit', 'delete'];
+  displayedColumns = [
+    'email',
+    'name',
+    'firstname',
+    'lastname',
+    'role',
+    'edit',
+    'delete'
+  ];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
   subscription = [];
 
   personsModel: PersonModel[] = [];
-  constructor(public http: HttpClient, private userService: UserService, public dialog: MatDialog) { }
+  constructor(
+    public http: HttpClient,
+    private userService: UserService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.userService.getUsers().subscribe(
-      (data: Array<PersonDto>) => {
-        this.users = data;
-        console.log(data);
-        this.personsModel = data.map(personDto => new PersonModel(personDto));
-        // this.personsModel = this.personsModel.sort((a,b)=>{(a.name<b.name)?-1:1});                            
-        this.dataSource = new MatTableDataSource(this.users.persons);
-        console.log(this.dataSource);
-      }
-    );
+    this.userService.getUsers().subscribe((data: Array<PersonDto>) => {
+      this.users = data;
+      console.log(data);
+      this.personsModel = data.map(personDto => new PersonModel(personDto));
+      // this.personsModel = this.personsModel.sort((a,b)=>{(a.name<b.name)?-1:1});
+      this.dataSource = new MatTableDataSource(this.users.persons);
+      console.log(this.dataSource);
+    });
   }
- 
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -48,26 +62,21 @@ export class UserListComponent implements OnInit {
   }
 
   delete(id) {
-
-    this.userService.deleteUser(id).subscribe((data) => console.log(data));
+    this.userService.deleteUser(id).subscribe(data => console.log(data));
   }
-
-
-
 }
-
 
 export class PersonDto {
   id: number;
-  name: string;
+  // name: string;
   personid: string;
   email: string;
   firstname: string;
   lastname: string;
   role: string;
   annotation: string;
-  created_at: string;
-  updated_at: string;
+  // created_at: string;
+  // updated_at: string;
 }
 
 export interface IPersonArray {
@@ -78,11 +87,12 @@ export interface IPersonArray {
 export class PersonModel extends PersonDto {
   constructor(dto?: PersonDto) {
     super();
-    if(dto){
-    return {
-      ...dto,
-      fullName: dto.firstname + " " + dto.lastname
-    }}
+    if (dto) {
+      return {
+        ...dto,
+        fullName: dto.firstname + ' ' + dto.lastname
+      };
+    }
   }
   fullName: string;
 }

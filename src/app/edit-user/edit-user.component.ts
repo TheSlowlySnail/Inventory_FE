@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
-import { PersonModel } from '../user-list/user-list.component';
+import { PersonModel, PersonDto } from '../user-list/user-list.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Form, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'shl-edit-user',
@@ -10,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit, OnDestroy {
-  public username: string;
+  public personEditModell: PersonModel;
+  // public username: string;
   private personid: string;
   public email: string;
   public role: string;
@@ -19,6 +21,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   public firstname: string;
   public lastname: string;
   public annotation: string;
+
 
   @Input() public userJson: IPersonArray;
   user: Person = new Person();
@@ -53,19 +56,18 @@ export class EditUserComponent implements OnInit, OnDestroy {
     }
   }
 
-  onChangeData() {
-    console.log(this.userService.user.firstname);
-    //FIXME: User ID sollte ich mir vom Service holen können, der Rest muss aus der Tabelle kommen.
-    this.userService.editUser(
-      this.userService.user.id,
-      this.userService.user.personid,
-      this.userService.user.email,
-      this.userService.user.firstname,
-      this.userService.user.lastname,
-      this.userService.user.role,
-      this.userService.user.annotation
-    );
-    debugger;
+  onChangeData(form: NgForm) {
+    console.log(form);
+
+    // FIXME: User ID sollte ich mir vom Service holen können, der Rest muss aus dem Formular kommen.
+    // this.personEditModell.email = this.email;
+    // this.personEditModell.personid = this.personid;
+    // this.personEditModell.role = this.role;
+    // this.personEditModell.firstname = this.firstname;
+    // this.personEditModell.lastname = this.lastname;
+    // this.personEditModell.annotation = this.annotation;
+
+    // this.userService.editUser(this.userService.user.id, this.personEditModell);
   }
 }
 export class Person {

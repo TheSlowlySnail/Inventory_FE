@@ -35,6 +35,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   onSignIn() {
     this.user = this.authService.login(this.email, this.password).subscribe(
       (resp: TokenClass) => {
+        console.log(this.email);
         localStorage.setItem('userToken', resp.success.token);
 
         this.router.navigate(['/dash']);

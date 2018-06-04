@@ -1,11 +1,16 @@
- <form class="item-form" *ngIf="user">
+<form class="item-form" *ngIf="user" (ngSubmit)="onChangeData(usereditform)" #usereditform="ngForm">
+
+
 <mat-form-field>
-   <input matInput name="email" placeholder="Email" [(ngModel)]="user.email" required>
+<input matInput id="email" name="email" placeholder="Email" [(ngModel)]="user.email" required>
+
+
 </mat-form-field>
 <br>
 
   <mat-form-field>
-    <input matInput name="Matrikelnumber" placeholder="personid" [(ngModel)]="user.personid" required>
+<input matInput name="Matrikelnumber" placeholder="personid" [(ngModel)]="user.personid" required>
+
   </mat-form-field>
 
 
@@ -13,11 +18,14 @@
 
 
   <mat-form-field>
-    <input matInput name="firstname" placeholder="firstname" [(ngModel)]="user.firstname" required>
+<input matInput name="firstname" placeholder="firstname" [(ngModel)]="user.firstname" required>
+
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="lastname" placeholder="lastname" [(ngModel)]="user.lastname" required>
+<input matInput name="lastname" placeholder="lastname" [(ngModel)]="user.lastname" required>
+
+
   </mat-form-field>
   <br>
 
@@ -32,7 +40,9 @@
   <br> -->
 
   <mat-form-field>
-    <input matInput name="annotation" placeholder="annotation" [(ngModel)]="user.annotation">
+<input matInput name="annotation" placeholder="annotation" [(ngModel)]="user.annotation" ngModel>
+
+
   </mat-form-field>
   <br>
 
@@ -41,6 +51,6 @@
 
 
 
-  <button mat-raised-button color="green" (click)='onChangeData()'>Save Edit</button>
+  <button mat-raised-button color="green" type="submit">Save Edit</button>
 
 </form>
