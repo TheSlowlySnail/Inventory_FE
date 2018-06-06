@@ -1,4 +1,4 @@
-<form class="item-form" *ngIf="user" (ngSubmit)="onChangeData(itemeditform)" #itemeditform="ngForm">
+<form class="item-form"  (ngSubmit)="onChangeData(itemeditform)" #itemeditform="ngForm">
 
 
   <mat-form-field>
@@ -28,14 +28,17 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Room">
-      <mat-option name="room" value="option">Option</mat-option>
+<mat-select name="room" placeholder="Room" [(ngModel)]="item.room">
+      <mat-option name="room" value="multimedia">multimedia</mat-option>
+      <mat-option name="room" value="bath">bath</mat-option>
+      <mat-option name="room" value="kitchen">kitchen</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Status">
-      <mat-option name="status" value="option">Option</mat-option>
+<mat-select name="status" placeholder="Status" [(ngModel)]="item.status">
+      <mat-option name="status" value="installed">installed</mat-option>
+      <mat-option name="status" value="packaged">packaged</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -52,7 +55,7 @@
   <br>
   <input type="file" (change)='onFileSelected($event)' name="image" id="image" type="file">
   <br>
-  <button mat-raised-button color="green" (click)='onSubmit()'>Item speichern</button>
+
 
   <br>
 
