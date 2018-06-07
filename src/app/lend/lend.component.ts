@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ItemService } from '../item.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDatepicker } from '@angular/material';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'shl-lend',
@@ -32,5 +33,10 @@ export class LendComponent {
       .toPromise();
 
     this.items = values.items.find(i => i.id == value.compId);
+  }
+
+  onChangeData(form: NgForm) {
+    console.log(this.datepicker._selected);
+
   }
 }
