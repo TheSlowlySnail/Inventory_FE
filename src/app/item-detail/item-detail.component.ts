@@ -23,8 +23,7 @@ export class ItemDetailComponent implements OnInit {
 
   constructor(
     public http: HttpClient,
-    /* public route: ActivatedRoute, */ @Inject(MAT_DIALOG_DATA)
-    public data: any
+     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit() {

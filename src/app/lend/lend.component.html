@@ -1,54 +1,31 @@
-<!--
+<h1>{{items.name}}</h1>
 
-
-
-  <br>
-
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-
-  <br>
-
-
-
-  <br>
-
-
-
-
-
-
-
--->
 <form class="lend-form" (ngSubmit)="onChangeData(lendform)" #lendform="ngForm">
   <mat-form-field>
-    <input matInput id="studentid" name="studentid" placeholder="Person id" required>
+    <input matInput name="studentid" placeholder="Person id" required ngModel>
   </mat-form-field>
-<br>
+  <br>
 
   <mat-form-field>
-    <input matInput [matDatepicker]="startpicker" placeholder="Choose a Startdate">
+    <input matInput name="startdate" [matDatepicker]="startpicker" placeholder="Choose a Startdate">
+
     <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
     <mat-datepicker #startpicker></mat-datepicker>
   </mat-form-field>
-<br>
+  <br>
 
-<mat-form-field>
-  <input matInput [matDatepicker]="endpicker" placeholder="Choose a Enddate">
-  <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
-  <mat-datepicker #endpicker></mat-datepicker>
-</mat-form-field>
-<br>
+  <mat-form-field>
+    <input matInput name="enddate" [matDatepicker]="endpicker" placeholder="Choose a Enddate">
+    <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+    <mat-datepicker #endpicker></mat-datepicker>
+  </mat-form-field>
+  <br>
 
   <mat-form-field>
     <input matInput name="annotation" placeholder="annotation" ngModel>
 
 
   </mat-form-field>
-<br>
+  <br>
   <button mat-raised-button color="green" type="submit">Save Edit</button>
 </form>

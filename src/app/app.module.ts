@@ -45,6 +45,7 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { UserClass } from './UserClass';
 import { ItemService } from './item.service';
 import { LendComponent } from './lend/lend.component';
+import { LendService } from './lend.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
@@ -122,6 +123,7 @@ const appRoutes: Routes = [
     ItemService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    LendService,
     AuthService,
     AuthGuard
   ],
