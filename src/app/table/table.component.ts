@@ -25,7 +25,16 @@ export class TableComponent implements OnInit, AfterViewInit {
   ) {}
 
   items: any = [];
-  displayedColumns = ['barcode', 'name', 'link', 'dialog', 'edit'];
+  displayedColumns = [
+    'barcode',
+    'name',
+    'type',
+    'room',
+    'status',
+    'dialog',
+    'edit',
+    'lend'
+  ];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
   subscription = [];
@@ -71,6 +80,4 @@ export class TableComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-
 }

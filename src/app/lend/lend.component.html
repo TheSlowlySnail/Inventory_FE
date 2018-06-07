@@ -1,0 +1,46 @@
+<!--
+
+
+
+  <br>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <br>
+
+
+
+  <br>
+
+
+
+
+
+
+
+-->
+<form class="lend-form" (ngSubmit)="onChangeData(lendform)" #lendform="ngForm">
+  <mat-form-field>
+    <input matInput id="studentid" name="studentid" placeholder="Person id" required>
+  </mat-form-field>
+<br>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+<br>
+  <mat-form-field>
+    <input matInput name="annotation" placeholder="annotation" ngModel>
+
+
+  </mat-form-field>
+<br>
+  <button mat-raised-button color="green" type="submit">Save Edit</button>
+</form>

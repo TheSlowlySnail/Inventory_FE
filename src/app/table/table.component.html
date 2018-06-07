@@ -8,7 +8,7 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<mat-table [dataSource]='dataSource' matSort >
+<mat-table [dataSource]='dataSource' matSort>
 
   <ng-container matColumnDef="barcode">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</mat-header-cell>
@@ -20,19 +20,35 @@
     <mat-cell *matCellDef="let items">{{items.name}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="link">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-    <mat-cell *matCellDef="let items" [routerLink]="['detail', items.id]">{{items.id}}</mat-cell>
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.type}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="room">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.room}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.status}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="dialog">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Details</mat-header-cell>
-    <mat-cell *matCellDef="let items" (click)="openDialog(items.id)">{{items.id}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Dialog </mat-header-cell>
+    <mat-cell *matCellDef="let items" (click)="openDialog(items.id)">MORE</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="edit">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
-<mat-cell *matCellDef="let items" [routerLink]="['/edititem', items.id]">EDIT </mat-cell>
+    <mat-cell *matCellDef="let items" [routerLink]="['/edititem', items.id]">EDIT </mat-cell>
+
+  </ng-container>
+
+  <ng-container matColumnDef="lend">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
+    <mat-cell *matCellDef="let items" [routerLink]="['/edititem', items.id]">LEND </mat-cell>
 
   </ng-container>
 

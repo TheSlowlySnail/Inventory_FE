@@ -34,7 +34,7 @@ export class ItemEditComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    debugger;
+
     console.log(this.id);
     this.item = this.loadItem(this.id);
   }

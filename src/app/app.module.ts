@@ -13,7 +13,11 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatToolbar,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE
 } from '@angular/material';
 import { MatInputModule, MatTableModule } from '@angular/material';
 import { ItemFormComponent } from './item-form/item-form.component';
@@ -40,6 +44,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserClass } from './UserClass';
 import { ItemService } from './item.service';
+import { LendComponent } from './lend/lend.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
@@ -66,6 +71,7 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'userlist', component: UserListComponent },
   { path: 'item', component: ItemFormComponent },
+  { path: 'lend', component: LendComponent },
   { path: 'edititem/:id', component: ItemEditComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -84,7 +90,9 @@ const appRoutes: Routes = [
     ItemEditComponent,
     UserListComponent,
 
-    UserCreateComponent
+    UserCreateComponent,
+
+    LendComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +103,8 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatInputModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     MatFormFieldModule,
     MatSelectModule,
@@ -111,6 +121,7 @@ const appRoutes: Routes = [
     EditUserComponent,
     ItemService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     AuthService,
     AuthGuard
   ],

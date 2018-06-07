@@ -46,7 +46,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
 
   async loadPerson(personId: number) {
     try {
-      let val: any = await this.http
+      const val: any = await this.http
         .get('http://127.0.0.1:8000/api/user/' + personId)
         .toPromise();
       this.user = val.persons;
@@ -56,11 +56,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   onChangeData(form: NgForm) {
-    console.log(form);
-
-    // FIXME: User ID sollte ich mir vom Service holen können, der Rest muss aus dem Formular kommen.
-
-
 
     this.email = form.value.email;
     console.log(this.email);
