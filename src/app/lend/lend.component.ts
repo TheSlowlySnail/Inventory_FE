@@ -27,7 +27,7 @@ export class LendComponent implements OnInit {
     type: string;
   };
 
-  private lend: LendClass;
+  private lend: LendClass = new LendClass();
   private personid: string;
 
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
@@ -54,6 +54,7 @@ export class LendComponent implements OnInit {
     console.log(this.datepicker._selected);
     console.log(form.value.studentid);
     this.lend.personid = form.value.studentid;
+    // this.lend.personid = form.value.studentid;
     this.lend.annotation = form.value.annotation;
     this.lend.startDate = form.value.startdate;
     this.lend.endDate = form.value.enddate;

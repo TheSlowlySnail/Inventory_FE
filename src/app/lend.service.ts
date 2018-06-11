@@ -13,7 +13,7 @@ export class LendService {
 
   addLend(lend: any) {
     return this.http
-      .post('http://127.0.0.1:8000/api/item', lend, this.httpOptions)
+      .post('http://127.0.0.1:8000/api/lend', lend, this.httpOptions)
       .subscribe(
         result => {
           console.log(result);
