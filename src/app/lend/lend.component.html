@@ -5,12 +5,12 @@
 
   <form class="lend-form" (ngSubmit)="onChangeData(lendform)" #lendform="ngForm">
     <mat-form-field>
-      <input matInput name="studentid" placeholder="Person id" required ngModel>
+      <input matInput name="studentid" placeholder="Person id" required ngModel >
     </mat-form-field>
     <br>
 
     <mat-form-field>
-      <input matInput name="startdate" [matDatepicker]="startpicker" placeholder="Choose a Startdate">
+      <input matInput name="startdate" [matDatepicker]="startpicker" placeholder="Choose a Startdate" ngModel>
 
       <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
       <mat-datepicker #startpicker></mat-datepicker>
@@ -18,7 +18,7 @@
     <br>
 
     <mat-form-field>
-      <input matInput name="enddate" [matDatepicker]="endpicker" placeholder="Choose a Enddate">
+      <input matInput name="enddate" [matDatepicker]="endpicker" placeholder="Choose a Enddate" ngModel>
       <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
       <mat-datepicker #endpicker></mat-datepicker>
     </mat-form-field>

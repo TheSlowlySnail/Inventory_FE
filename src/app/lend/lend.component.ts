@@ -1,17 +1,24 @@
-import { Component, ViewChild, OnInit, Inject } from '@angular/core';
+import { Component, ViewChild, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { ItemService } from '../item.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDatepicker, MAT_DIALOG_DATA } from '@angular/material';
 import { NgForm } from '@angular/forms';
 import { LendClass } from '../LendClass';
 import { LendService } from '../lend.service';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
+
+import * as _moment from 'moment';
+
+
+
 
 @Component({
   selector: 'shl-lend',
   templateUrl: './lend.component.html',
   styleUrls: ['./lend.component.scss']
 })
-export class LendComponent implements OnInit {
+export class LendComponent implements OnInit, AfterViewInit {
   private items: {
     annotation: string;
     barcode: string;
@@ -30,9 +37,20 @@ export class LendComponent implements OnInit {
   private lend: LendClass = new LendClass();
   private personid: string;
 
+
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   ngOnInit(): void {
     this.load(this.data);
+  }
+  ngAfterViewInit(): void {
+    // this.startpicker.selectedChanged.subscribe(
+    //   (newDate: MomentDateAdapter) => {
+    //     this.lend.startDate = moment.isMoment(newDate);
+    //   },
+    //   error => {
+    //     throw Error(error);
+    //   }
+    // );
   }
   constructor(
     private itemService: ItemService,
@@ -53,14 +71,19 @@ export class LendComponent implements OnInit {
   onChangeData(form: NgForm) {
     console.log(this.datepicker._selected);
     console.log(form.value.studentid);
+    this.lend.itemid = this.items.id;
     this.lend.personid = form.value.studentid;
     // this.lend.personid = form.value.studentid;
     this.lend.annotation = form.value.annotation;
-    this.lend.startDate = form.value.startdate;
-    this.lend.endDate = form.value.enddate;
+    this.lend.startdate = form.value.startdate._d;
 
-      this.lendService.addLend(this.lend);
+    this.lend.startDay = form.value.startdate._i.date;
+    this.lend.startMonth = form.value.startdate._i.month;
+    this.lend.startYear = form.value.startdate._i.year;
+
+    this.lend.enddate = form.value.enddate._d;
+    console.log(this.lend);
+
+    this.lendService.addLend(this.lend);
   }
-
-
 }

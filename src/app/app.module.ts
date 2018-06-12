@@ -47,6 +47,11 @@ import { ItemService } from './item.service';
 import { LendComponent } from './lend/lend.component';
 import { LendService } from './lend.service';
 
+import {
+  MatMomentDateModule,
+  MAT_MOMENT_DATE_FORMATS
+} from '@angular/material-moment-adapter';
+
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
   {
@@ -106,13 +111,14 @@ const appRoutes: Routes = [
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+MatMomentDateModule,
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
     RouterModule.forRoot(appRoutes),
     MatDialogModule,
     MatToolbarModule,
+
     FormsModule,
     ReactiveFormsModule
   ],
