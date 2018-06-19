@@ -64,7 +64,7 @@ export class LendComponent implements OnInit, AfterViewInit {
       .get<any>('http://127.0.0.1:8000/api/items')
       .toPromise();
 
-    this.items = values.items.find(i => i.id == value.compId);
+    this.items = values.items.find(i => i.id === value.compId);
     console.log(this.items.id);
   }
 

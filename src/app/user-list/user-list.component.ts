@@ -47,7 +47,7 @@ export class UserListComponent implements OnInit {
     this.userService.getUsers().subscribe((data: Array<PersonDto>) => {
       this.users = data;
       console.log(data);
-      this.personsModel = data.map(personDto => new PersonModel(personDto));
+      this.personsModel = data;
       // this.personsModel = this.personsModel.sort((a,b)=>{(a.name<b.name)?-1:1});
       this.dataSource = new MatTableDataSource(this.users.persons);
       console.log(this.dataSource);

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LendService {
@@ -22,5 +23,15 @@ export class LendService {
           console.log(err);
         }
       );
+  }
+
+  getLendsOfUser(personId) {
+    console.log('http://127.0.0.1:8000/api/pidlends?pid=' + personId);
+    return this.http.get('http://127.0.0.1:8000/api/pidlends?pid=' + personId);
+  }
+
+  getLendsOfAllUser() {
+
+    return this.http.get('http://127.0.0.1:8000/api/lends');
   }
 }

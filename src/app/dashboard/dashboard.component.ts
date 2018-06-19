@@ -25,12 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribtion = this.userService
-      .getUserDetail()
-      .subscribe((data: IPersonArray) => {
-        this.userClaims = data.persons;
-        this.userService.user = data.persons;
-
-      });
+      .getUserDetail();
   }
 
   ngOnDestroy() {

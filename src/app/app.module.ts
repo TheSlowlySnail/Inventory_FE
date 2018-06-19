@@ -42,15 +42,17 @@ import { ItemEditComponent } from './item-edit/item-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 import { UserCreateComponent } from './user-create/user-create.component';
-import { UserClass } from './UserClass';
 import { ItemService } from './item.service';
 import { LendComponent } from './lend/lend.component';
 import { LendService } from './lend.service';
+import { MomentModule } from 'ngx-moment';
 
 import {
   MatMomentDateModule,
   MAT_MOMENT_DATE_FORMATS
 } from '@angular/material-moment-adapter';
+import { LendOverviewComponent } from './lend-overview/lend-overview.component';
+import { LendsOverviewAllComponent } from './lends-overview-all/lends-overview-all.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
@@ -78,6 +80,8 @@ const appRoutes: Routes = [
   { path: 'userlist', component: UserListComponent },
   { path: 'item', component: ItemFormComponent },
   { path: 'lend', component: LendComponent },
+  { path: 'lendpid', component: LendOverviewComponent },
+  { path: 'lends', component: LendsOverviewAllComponent },
   { path: 'edititem/:id', component: ItemEditComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -98,7 +102,11 @@ const appRoutes: Routes = [
 
     UserCreateComponent,
 
-    LendComponent
+    LendComponent,
+
+    LendOverviewComponent,
+
+    LendsOverviewAllComponent
   ],
   imports: [
     BrowserModule,
@@ -111,13 +119,15 @@ const appRoutes: Routes = [
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-MatMomentDateModule,
+    MatMomentDateModule,
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
     RouterModule.forRoot(appRoutes),
     MatDialogModule,
     MatToolbarModule,
+
+    MomentModule,
 
     FormsModule,
     ReactiveFormsModule
