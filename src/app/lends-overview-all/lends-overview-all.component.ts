@@ -42,7 +42,7 @@ export class LendsOverviewAllComponent implements OnInit {
     await this.lendService
       .getLendsOfAllUser()
       .subscribe(data => {
-        this.dataSource = data.lends;
+        this.dataSource = data;
         console.log(this.dataSource);
       });
   }
