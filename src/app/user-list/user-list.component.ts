@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   subscription = [];
 
-  personsModel: PersonModel[] = [];
+  personsModel: PersonDto[] = [];
   constructor(
     public http: HttpClient,
     private userService: UserService,
@@ -72,6 +72,7 @@ export class PersonDto {
   personid: string;
   email: string;
   firstname: string;
+  fullname: string;
   lastname: string;
   role: string;
   annotation: string;
