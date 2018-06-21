@@ -53,6 +53,7 @@ import {
 } from '@angular/material-moment-adapter';
 import { LendOverviewComponent } from './lend-overview/lend-overview.component';
 import { LendsOverviewAllComponent } from './lends-overview-all/lends-overview-all.component';
+import { ExcelImportExportComponent } from './excel-import-export/excel-import-export.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
@@ -106,7 +107,9 @@ const appRoutes: Routes = [
 
     LendOverviewComponent,
 
-    LendsOverviewAllComponent
+    LendsOverviewAllComponent,
+
+    ExcelImportExportComponent
   ],
   imports: [
     BrowserModule,
