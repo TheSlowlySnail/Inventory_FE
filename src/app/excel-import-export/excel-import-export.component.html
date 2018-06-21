@@ -1,3 +1,6 @@
-<p>
-  excel-import-export works!
-</p>
+<form class="item-form">
+
+  <input type="file" (change)='onFileSelected($event)' name="image" id="image" type="file">
+  <br>
+  <button mat-raised-button color="green" (click)='onSubmit()'>Import File</button>
+</form>

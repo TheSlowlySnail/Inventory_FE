@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemFormService } from '../item-form.service';
 
 @Component({
   selector: 'shl-excel-import-export',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./excel-import-export.component.scss']
 })
 export class ExcelImportExportComponent implements OnInit {
+  selectedFile: File = null;
 
-  constructor() { }
+  constructor(private itemFormService: ItemFormService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  async onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+    await this.itemFormService.onUpload(this.selectedFile);
+
   }
-
 }
