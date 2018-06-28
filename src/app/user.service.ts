@@ -39,7 +39,7 @@ export class UserService {
       })
     };
     console.log('getUserDetail');
-    debugger
+
     console.log(localStorage.getItem('userToken'));
     console.log('HTTP OPTION');
     console.log(this.httpOptions);

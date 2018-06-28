@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="hfu">
 
 
   <mat-toolbar-row>
@@ -7,7 +7,7 @@
 
     <span class="example-spacer" *ngIf="userClaims" >
 
-      <a  [routerLink]="['/dash/edituser', userClaims.id]" >
+      <a  [routerLink]="['edituser', userClaims.id]" >
         Profile
 
       </a>
@@ -16,14 +16,14 @@
 
     <span class="example-spacer" >
 
-      <a  [routerLink]="['/dash/items']" >
+      <a  [routerLink]="['items']" >
         Liste
       </a>
 
     </span>
 <span class="example-spacer">
 
-  <a [routerLink]="['/lendpid']">
+  <a [routerLink]="['lendpid']">
     Lend Personal
   </a>
 
@@ -31,7 +31,7 @@
 
 <span class="example-spacer">
 
-  <a [routerLink]="['/lends']">
+  <a [routerLink]="['lends']">
     Lend All
   </a>
 
@@ -39,8 +39,8 @@
 
 <span class="example-spacer">
 
-  <a [routerLink]="['/userlist']">
-    Lend All
+  <a [routerLink]="['userlist']">
+    userlist
   </a>
 
 </span>

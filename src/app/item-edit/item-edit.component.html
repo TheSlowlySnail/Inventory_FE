@@ -1,15 +1,15 @@
-<form class="item-form"  (ngSubmit)="onChangeData(itemeditform)" #itemeditform="ngForm">
+<form class="item-form"  (ngSubmit)="onChangeData(itemeditform)" #itemeditform="ngForm" *ngIf="items">
 
 
   <mat-form-field>
-    <input matInput id="barcode" name="barcode" placeholder="Barcode" [(ngModel)]="item.barcode" required>
+    <input matInput id="barcode" name="barcode" placeholder="Barcode" [(ngModel)]="items.barcode" required>
 
 
   </mat-form-field>
   <br>
 
   <mat-form-field>
-    <input matInput name="name" placeholder="name" [(ngModel)]="item.name" required>
+    <input matInput name="name" placeholder="name" [(ngModel)]="items.name" required>
 
 
 
@@ -20,7 +20,7 @@
 
 
   <mat-form-field>
-    <input matInput name="description" placeholder="description" [(ngModel)]="item.description" required>
+    <input matInput name="description" placeholder="description" [(ngModel)]="items.description" required>
 
 
 
@@ -28,7 +28,7 @@
   </mat-form-field>
 
   <mat-form-field>
-<mat-select name="room" placeholder="Room" [(ngModel)]="item.room">
+<mat-select name="room" placeholder="Room" [(ngModel)]="items.room">
       <mat-option name="room" value="multimedia">multimedia</mat-option>
       <mat-option name="room" value="bath">bath</mat-option>
       <mat-option name="room" value="kitchen">kitchen</mat-option>
@@ -36,7 +36,7 @@
   </mat-form-field>
 
   <mat-form-field>
-<mat-select name="status" placeholder="Status" [(ngModel)]="item.status">
+<mat-select name="status" placeholder="Status" [(ngModel)]="items.status">
       <mat-option name="status" value="installed">installed</mat-option>
       <mat-option name="status" value="packaged">packaged</mat-option>
     </mat-select>
@@ -49,7 +49,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="manufactor" placeholder="Hersteller" [(ngModel)]="manufactor">
+<input matInput name="manufactor" placeholder="Hersteller" [(ngModel)]="items.manufactor">
   </mat-form-field>
 
   <br>

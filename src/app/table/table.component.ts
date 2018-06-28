@@ -12,6 +12,7 @@ import { ItemDetailComponent } from '../item-detail/item-detail.component';
 import { ItemFormService } from '../item-form.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LendComponent } from '../lend/lend.component';
+import { ItemEditComponent } from '../item-edit/item-edit.component';
 
 @Component({
   selector: 'shl-table',
@@ -76,6 +77,14 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   openDialog(id) {
     this.dialog.open(ItemDetailComponent, {
+      data: {
+        compId: id
+      }
+    });
+  }
+
+  openItemEditDialog(id) {
+    this.dialog.open(ItemEditComponent, {
       data: {
         compId: id
       }

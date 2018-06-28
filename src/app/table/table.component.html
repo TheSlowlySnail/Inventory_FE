@@ -42,7 +42,8 @@
 
   <ng-container matColumnDef="edit">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
-    <mat-cell *matCellDef="let items" [routerLink]="['/edititem', items.id]">EDIT </mat-cell>
+<mat-cell *matCellDef="let items" (click)="openItemEditDialog(items.id)">EDIT </mat-cell>
+    <!-- <mat-cell *matCellDef="let items" [routerLink]="['edititem', items.id]">EDIT </mat-cell> -->
 
   </ng-container>
 

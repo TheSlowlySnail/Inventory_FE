@@ -72,20 +72,22 @@ const appRoutes: Routes = [
             children: [{ path: 'detail/:id', component: ItemDetailComponent }]
           }
         ]
-      }
+      },
+      { path: 'userlist', component: UserListComponent },
+
+      { path: 'item', component: ItemFormComponent },
+      { path: 'lend', component: LendComponent },
+      { path: 'lendpid', component: LendOverviewComponent },
+      { path: 'lends', component: LendsOverviewAllComponent },
+      { path: 'edititem/:id', component: ItemEditComponent }
     ]
   },
   { path: 'form', component: ItemFormComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'userlist', component: UserListComponent },
-  { path: 'item', component: ItemFormComponent },
-  { path: 'lend', component: LendComponent },
-  { path: 'lendpid', component: LendOverviewComponent },
-  { path: 'lends', component: LendsOverviewAllComponent },
-  { path: 'edititem/:id', component: ItemEditComponent },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

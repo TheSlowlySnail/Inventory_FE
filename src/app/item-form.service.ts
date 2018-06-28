@@ -5,8 +5,7 @@ import { error } from 'protractor';
 
 @Injectable()
 export class ItemFormService {
-
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -14,30 +13,36 @@ export class ItemFormService {
     })
   };
 
-
   itemWasPosted: EventEmitter<void> = new EventEmitter<void>();
 
-
   addItem(item: any) {
-    return this.http.post('http://127.0.0.1:8000/api/item', item, this.httpOptions)
+    return this.http
+      .post('http://127.0.0.1:8000/api/item', item, this.httpOptions)
       .subscribe(
-        (result) => {
+        result => {
           console.log(result);
 
           this.itemWasPosted.emit();
         },
-        (err) => { console.log(err); }
+        err => {
+          console.log(err);
+        }
       );
-
-
   }
-
 
   onUpload(selectedFile: File) {
     const fd = new FormData();
     fd.append('image', selectedFile, selectedFile.name);
-    this.http.post('http://127.0.0.1:8000/api/store', fd)
+    this.http
+      .post('http://127.0.0.1:8000/api/store', fd)
       .subscribe(res => console.log(res));
   }
 
+  onUploadWithFileName(selectedFile: File) {
+    const fd = new FormData();
+    fd.append('image', selectedFile, 'barcode.xls');
+    this.http
+      .post('http://127.0.0.1:8000/api/store', fd)
+      .subscribe(res => console.log(res));
+  }
 }

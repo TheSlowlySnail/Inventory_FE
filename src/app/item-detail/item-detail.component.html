@@ -1,10 +1,10 @@
 <mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+  <!-- <mat-card-header> -->
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title> {{items.name}}</mat-card-title>
     <mat-card-subtitle>{{items.barcode}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="{{items.image}}" alt="items.name">
+  <!-- </mat-card-header> -->
+  <img *ngIf="items.image" mat-card-image src="{{items.image}}" alt="items.name">
   <mat-card-content>
     <p>
       {{items.description}}
@@ -12,7 +12,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button mat-dialog-close>CLOSE</button>
-    <button mat-button>SHARE</button>
+
   </mat-card-actions>
 </mat-card>
 
