@@ -5,47 +5,47 @@
     <span>Second Line</span>
     <span class="example-fill-remaining-space"></span>
 
-    <span class="example-spacer" *ngIf="userClaims" >
+    <span class="example-spacer" *ngIf="userClaims">
 
-      <a  [routerLink]="['edituser', userClaims.id]" >
+      <a [routerLink]="['edituser', userClaims.id]">
         Profile
 
       </a>
 
     </span>
 
-    <span class="example-spacer" >
+    <span class="example-spacer">
 
-      <a  [routerLink]="['items']" >
+      <a [routerLink]="['items']">
         Liste
       </a>
 
     </span>
-<span class="example-spacer">
+    <span class="example-spacer">
 
-  <a [routerLink]="['lendpid']">
-    Lend Personal
-  </a>
+      <a [routerLink]="['lendpid']">
+        Lend Personal
+      </a>
 
-</span>
+    </span>
 
-<span class="example-spacer">
+    <span class="example-spacer">
 
-  <a [routerLink]="['lends']">
-    Lend All
-  </a>
+      <a [routerLink]="['lends']">
+        Lend All
+      </a>
 
-</span>
+    </span>
 
-<span class="example-spacer">
+    <span class="example-spacer">
 
-  <a [routerLink]="['userlist']">
-    userlist
-  </a>
+      <a [routerLink]="['userlist']">
+        userlist
+      </a>
 
-</span>
+    </span>
 
-    <span class="example-spacer" >
+    <span class="example-spacer">
 
       <a (click)="onLogOut()">
         Log out
