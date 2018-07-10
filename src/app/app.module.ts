@@ -55,6 +55,7 @@ import { LendOverviewComponent } from './lend-overview/lend-overview.component';
 import { LendsOverviewAllComponent } from './lends-overview-all/lends-overview-all.component';
 import { ExcelImportExportComponent } from './excel-import-export/excel-import-export.component';
 
+
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
   {
@@ -85,9 +86,10 @@ const appRoutes: Routes = [
   { path: 'form', component: ItemFormComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
+  { path: 'excel', component: ExcelImportExportComponent },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: '**', redirectTo: 'signin', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -111,7 +113,9 @@ const appRoutes: Routes = [
 
     LendsOverviewAllComponent,
 
-    ExcelImportExportComponent
+    ExcelImportExportComponent,
+
+
   ],
   imports: [
     BrowserModule,

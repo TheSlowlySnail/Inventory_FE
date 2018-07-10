@@ -40,9 +40,9 @@ export class ItemFormService {
 
   onUploadWithFileName(selectedFile: File) {
     const fd = new FormData();
-    fd.append('image', selectedFile, 'barcode.xls');
+    fd.append('file', selectedFile, 'barcode.xls');
     this.http
-      .post('http://127.0.0.1:8000/api/store', fd)
+      .post('http://127.0.0.1:8000/api/export', fd)
       .subscribe(res => console.log(res));
   }
 }

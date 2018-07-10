@@ -100,7 +100,7 @@ export class ItemEditComponent implements OnInit {
     }
     console.log(this.id);
 
-    debugger
+
     this.itemService.editItem(
       this.id,
       this.barcode,

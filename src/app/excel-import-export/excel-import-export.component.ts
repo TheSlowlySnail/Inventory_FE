@@ -13,9 +13,15 @@ export class ExcelImportExportComponent implements OnInit {
 
   ngOnInit() {}
 
-  async onFileSelected(event) {
+  onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
-    await this.itemFormService.onUpload(this.selectedFile);
+  }
 
+  async onUploadWithFileName() {
+    console.log(this.selectedFile);
+    // this.selectedFile = <File>event.target.files[0];
+
+    await this.itemFormService.onUploadWithFileName(this.selectedFile);
+    console.log('Excel imported');
   }
 }
