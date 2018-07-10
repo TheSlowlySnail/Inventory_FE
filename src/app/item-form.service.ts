@@ -42,7 +42,7 @@ export class ItemFormService {
     const fd = new FormData();
     fd.append('file', selectedFile, 'barcode.xls');
     this.http
-      .post('http://127.0.0.1:8000/api/export', fd)
+      .post('http://127.0.0.1:8000/api/excelimport', fd)
       .subscribe(res => console.log(res));
   }
 }
