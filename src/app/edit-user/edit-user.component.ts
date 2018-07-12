@@ -13,7 +13,7 @@ import { Form, NgForm } from '@angular/forms';
 export class EditUserComponent implements OnInit, OnDestroy {
   public personEditModell: PersonModel;
   // public username: string;
-  private personid: string;
+  private personid: number;
   public email: string;
   public role: string;
   public password: string;
@@ -33,11 +33,14 @@ export class EditUserComponent implements OnInit, OnDestroy {
   public subscribtions = [];
   test;
   ngOnInit() {
-    this.subscribtions.push(
+
+    this.personid = Number( this.router.snapshot.paramMap.get('id'));
+    /* this.subscribtions.push(
       this.router.params.subscribe((params: Params) => {
         this.loadPerson(this.userService.user.id);
       })
-    );
+    ); */
+    this.loadPerson(this.personid);
     console.log(this.userJson);
   }
   ngOnDestroy(): void {
@@ -45,17 +48,16 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   async loadPerson(personId: number) {
-    /* try {
+    try {
       const val: any = await this.http
         .get('http://127.0.0.1:8000/api/user/' + personId)
         .toPromise();
       this.user = val.persons;
-      console.log(val)
+      console.log(val);
+      console.log(personId);
     } catch (err) {
       console.log(err);
-    } */
-
-    this.user = this.userService.user.persons;
+    }
   }
 
   onChangeData(form: NgForm) {
