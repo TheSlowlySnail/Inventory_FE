@@ -18,7 +18,7 @@ export class UserService {
   };
 
   constructor(private http: HttpClient) {
-    console.log(localStorage.getItem('userToken'));
+    //console.log(localStorage.getItem('userToken'));
   }
 
   getUser(id: number) {
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   // Nur mit Token erreichbar, deswegen POST
-  getUserDetail() {
+   getUserDetail() {
     this.httpOptions = {
       headers: new HttpHeaders({
         /* 'Content-Type': 'application/json', */
@@ -43,7 +43,7 @@ export class UserService {
     console.log(localStorage.getItem('userToken'));
     console.log('HTTP OPTION');
     console.log(this.httpOptions);
-    return this.http.post(
+    return  this.http.post(
       this.rootUrl + '/userDetails',
       null,
       this.httpOptions
@@ -51,6 +51,7 @@ export class UserService {
     .subscribe(
       (data) => {
         this.user = data;
+        console.log(data);
       }
     );
   }

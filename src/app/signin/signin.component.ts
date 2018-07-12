@@ -7,6 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ISubscription } from 'rxjs/Subscription';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'shl-signin',
@@ -25,18 +26,22 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   public user: ISubscription;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
 
   ngOnInit() {}
   ngOnDestroy(): void {
     this.user.unsubscribe();
   }
 
-  onSignIn() {
+   onSignIn() {
     this.user = this.authService.login(this.email, this.password).subscribe(
-      (resp: TokenClass) => {
+      async (resp: TokenClass) => {
         console.log(this.email);
-        localStorage.setItem('userToken', resp.success.token);
+        console.log(resp);
+        await localStorage.setItem('userToken', resp.success.token);
+
+        await this.userService.getUserDetail();
+        console.log(this.userService.user);
 
         this.router.navigate(['/dash']);
       },

@@ -7,9 +7,9 @@
       <span>SHL Inventory </span>
       <span ></span>
 
-      <span  *ngIf="userClaims">
+      <span  *ngIf="userService.user">
 
-        <a [routerLink]="['edituser', userClaims.id]">
+        <a [routerLink]="['edituser', userService.user.persons.id]">
           Profile
 
         </a>
@@ -31,7 +31,7 @@
 
       </span>
 
-      <span >
+      <span *ngIf="userService.user.persons.role == 'Admin'">
 
         <a [routerLink]="['lends']">
           Lend All
@@ -39,7 +39,7 @@
 
       </span>
 
-      <span >
+      <span *ngIf="userService.user.persons.role == 'Admin'" >
 
         <a [routerLink]="['userlist']">
           Userlist

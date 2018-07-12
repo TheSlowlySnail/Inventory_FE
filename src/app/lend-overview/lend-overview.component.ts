@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { LendService } from '../lend.service';
 import { UserService } from '../user.service';
 import { MomentModule } from 'ngx-moment';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'shl-lend-overview',
@@ -35,11 +36,11 @@ export class LendOverviewComponent implements OnInit {
     this.userService.getUserDetail();
   }
 
-  async getUserLends() {
+   getUserLends() {
     this.dataSource = this.userService.user;
-    await console.log(this.userService.user);
+     console.log(this.userService.user);
 
-    await this.lendService
+     this.lendService
       .getLendsOfUser(this.userService.user.persons.personid)
       .subscribe(data => {
         this.dataSource = data;
