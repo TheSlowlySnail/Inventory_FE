@@ -64,13 +64,14 @@ export class EditUserComponent implements OnInit, OnDestroy {
 
     this.email = form.value.email;
     console.log(this.email);
+    console.log(this.userService.user.persons.id);
     this.personid = form.value.personid;
     //  this.personEditModell.role = form.valid.role;
     this.firstname = form.value.firstname;
     this.lastname = form.value.lastname;
     this.annotation = form.value.annotation;
 
-    this.userService.editUser(this.userService.user.id, this.email, this.firstname, this.lastname);
+    this.userService.editUser(this.userService.user.persons.id, this.email, this.firstname, this.lastname);
   }
 }
 export class Person {
