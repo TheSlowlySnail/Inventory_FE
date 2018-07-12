@@ -31,7 +31,7 @@
 
 </ng-container>
 
-<ng-container matColumnDef="edit">
+<ng-container matColumnDef="edit" *ngIf="userService.user.persons.role == 'Admin'">
   <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
   <mat-cell *matCellDef="let item">Edit</mat-cell>
 

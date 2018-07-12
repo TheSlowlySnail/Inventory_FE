@@ -44,14 +44,14 @@
 
   </ng-container>
 
-  <ng-container matColumnDef="edit">
+  <ng-container matColumnDef="edit" *ngIf="userService.user.persons.role == 'Admin'">
     <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
     <mat-cell *matCellDef="let users">EDIT</mat-cell>
 
 
   </ng-container>
 
-  <ng-container matColumnDef="delete">
+  <ng-container matColumnDef="delete" *ngIf="userService.user.persons.role == 'Admin'">
     <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
 <mat-cell *matCellDef="let users">
   <a (click)="delete(users.id)">DELETE</a>

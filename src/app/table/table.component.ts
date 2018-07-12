@@ -13,6 +13,7 @@ import { ItemFormService } from '../item-form.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LendComponent } from '../lend/lend.component';
 import { ItemEditComponent } from '../item-edit/item-edit.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'shl-table',
@@ -23,10 +24,12 @@ export class TableComponent implements OnInit, AfterViewInit {
   constructor(
     public http: HttpClient,
     public dialog: MatDialog,
-    private itemFormService: ItemFormService
+    private itemFormService: ItemFormService,
+    private userService: UserService
   ) {}
 
   items: any = [];
+
   displayedColumns = [
     'barcode',
     'name',
@@ -42,6 +45,17 @@ export class TableComponent implements OnInit, AfterViewInit {
   subscription = [];
 
   ngOnInit() {
+    if (this.userService.user.persons.role === 'User') {
+      console.log('in der if verzweigung');
+      this.displayedColumns = [
+        'barcode',
+        'name',
+        'type',
+        'room',
+        'status',
+        'dialog'
+      ];
+    }
     this.load();
     this.subscription.push(
       this.itemFormService.itemWasPosted.subscribe(() => {

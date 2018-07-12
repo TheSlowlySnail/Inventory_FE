@@ -40,15 +40,15 @@
     <mat-cell *matCellDef="let items" (click)="openDialog(items.id)">MORE</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="edit">
+  <ng-container matColumnDef="edit" *ngIf="userService.user.persons.role == 'Admin'">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
 <mat-cell *matCellDef="let items" (click)="openItemEditDialog(items.id)">EDIT </mat-cell>
     <!-- <mat-cell *matCellDef="let items" [routerLink]="['edititem', items.id]">EDIT </mat-cell> -->
 
   </ng-container>
 
-  <ng-container matColumnDef="lend">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
+  <ng-container matColumnDef="lend" *ngIf="userService.user.persons.role == 'Admin'">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Lend</mat-header-cell>
     <mat-cell *matCellDef="let items" (click)="openLendDialog(items.id)">LEND </mat-cell>
 
 
