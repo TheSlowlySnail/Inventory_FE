@@ -45,14 +45,17 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   async loadPerson(personId: number) {
-    try {
+    /* try {
       const val: any = await this.http
         .get('http://127.0.0.1:8000/api/user/' + personId)
         .toPromise();
       this.user = val.persons;
+      console.log(val)
     } catch (err) {
       console.log(err);
-    }
+    } */
+
+    this.user = this.userService.user.persons;
   }
 
   onChangeData(form: NgForm) {
