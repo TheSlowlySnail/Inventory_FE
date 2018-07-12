@@ -1,80 +1,83 @@
-<mat-toolbar class="hfu">
 
 
-  <mat-toolbar-row>
-    <span>SHL Inventory </span>
-    <span class="example-fill-remaining-space"></span>
-
-    <span class="example-spacer" *ngIf="userClaims">
-
-      <a [routerLink]="['edituser', userClaims.id]">
-        Profile
-
-      </a>
-
-    </span>
-
-    <span class="example-spacer">
-
-      <a [routerLink]="['items']">
-        Liste
-      </a>
-
-    </span>
-    <span class="example-spacer">
-
-      <a [routerLink]="['lendpid']">
-        Lend Personal
-      </a>
-
-    </span>
-
-    <span class="example-spacer">
-
-      <a [routerLink]="['lends']">
-        Lend All
-      </a>
-
-    </span>
-
-    <span class="example-spacer">
-
-      <a [routerLink]="['userlist']">
-        Userlist
-      </a>
-
-    </span>
-
-    <span class="example-spacer">
-
-      <a (click)="onLogOut()">
-        Log out
-
-      </a>
-
-    </span>
 
 
-  </mat-toolbar-row>
+    <div class="felx-container hfu">
+
+      <span>SHL Inventory </span>
+      <span ></span>
+
+      <span  *ngIf="userClaims">
+
+        <a [routerLink]="['edituser', userClaims.id]">
+          Profile
+
+        </a>
+
+      </span>
+
+      <span >
+
+        <a [routerLink]="['items']">
+          Liste
+        </a>
+
+      </span>
+      <span >
+
+        <a [routerLink]="['lendpid']">
+          Lend Personal
+        </a>
+
+      </span>
+
+      <span >
+
+        <a [routerLink]="['lends']">
+          Lend All
+        </a>
+
+      </span>
+
+      <span >
+
+        <a [routerLink]="['userlist']">
+          Userlist
+        </a>
+
+      </span>
+
+      <span >
+
+        <a (click)="onLogOut()">
+          Log out
+
+        </a>
+
+      </span>
 
 
-</mat-toolbar>
+    </div>
+
+
+
+
 
 <router-outlet></router-outlet>
 <!-- <shl-edit-user [user]="userClaims"></shl-edit-user> -->
 <!-- <div class="row" *ngIf="userClaims">
-  <div class="col s12 m7">
-    <div class="card">
-      <div class="card-content">
-        <span>Username :{{userClaims.UserName}}</span>
-        <br>
-        <span>Email : {{userClaims.Email}}</span>
-        <br>
-        <span>Full Name : {{userClaims.FirstName}} {{userClaims.LastName}}</span>
-        <br>
-        <span>Logged On : {{userClaims.LoggedOn}}</span>
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-content">
+          <span>Username :{{userClaims.UserName}}</span>
+          <br>
+          <span>Email : {{userClaims.Email}}</span>
+          <br>
+          <span>Full Name : {{userClaims.FirstName}} {{userClaims.LastName}}</span>
+          <br>
+          <span>Logged On : {{userClaims.LoggedOn}}</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
- -->
+-->

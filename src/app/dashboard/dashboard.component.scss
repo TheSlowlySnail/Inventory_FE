@@ -1,10 +1,21 @@
-.example-fill-remaining-space {
-  /* This fills the remaining space, by using flexbox.
-     Every toolbar row uses a flexbox row layout. */
-  flex: 1 1 1 1 auto;
-}
 
-.hfu{
+
+.felx-container {
+  display: flex;
   background-color: #018F59;
-  color: white;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  span {
+    color: white;
+    margin: .8rem;
+    width: 120px;
+
+
+  }
+
 }
