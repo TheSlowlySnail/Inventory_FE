@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { LendComponent } from '../lend/lend.component';
 import { ItemEditComponent } from '../item-edit/item-edit.component';
 import { UserService } from '../user.service';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'shl-table',
@@ -25,7 +26,8 @@ export class TableComponent implements OnInit, AfterViewInit {
     public http: HttpClient,
     public dialog: MatDialog,
     private itemFormService: ItemFormService,
-    private userService: UserService
+    private userService: UserService,
+    private itemService: ItemService
   ) {}
 
   items: any = [];
@@ -38,7 +40,8 @@ export class TableComponent implements OnInit, AfterViewInit {
     'status',
     'dialog',
     'edit',
-    'lend'
+    'lend',
+    'delete'
   ];
   dataSource: any = [];
   @ViewChild(MatSort) sort: MatSort;
@@ -46,7 +49,6 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.userService.user.persons.role === 'User') {
-
       this.displayedColumns = [
         'barcode',
         'name',
@@ -106,11 +108,15 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   openLendDialog(id) {
-
     this.dialog.open(LendComponent, {
       data: {
         compId: id
       }
     });
+  }
+
+  openItemDelete(id) {
+    this.itemService.deleteItem(id);
+    console.log('Item ' + id +  ' was deleted');
   }
 }

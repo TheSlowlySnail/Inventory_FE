@@ -31,6 +31,7 @@ export class ItemService {
     lend?: number,
     manufactor?: string
   ) {
+    console.log('edit item' + id);
     return this.http
       .put(
         'http://127.0.0.1:8000/api/item/' + id,
@@ -50,6 +51,7 @@ export class ItemService {
       )
       .subscribe(
         respone => {
+          console.log('Edit Item');
           console.log(respone);
         },
         err => console.log(err)
@@ -98,6 +100,4 @@ export class ItemService {
         err => console.log(err)
       );
   }
-
-
 }

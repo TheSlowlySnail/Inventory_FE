@@ -50,10 +50,11 @@
   <ng-container matColumnDef="lend" *ngIf="userService.user.persons.role == 'Admin'">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Lend</mat-header-cell>
     <mat-cell *matCellDef="let items" (click)="openLendDialog(items.id)">LEND </mat-cell>
+  </ng-container>
 
-
-
-
+  <ng-container matColumnDef="delete" *ngIf="userService.user.persons.role == 'Admin'">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Lend</mat-header-cell>
+    <mat-cell *matCellDef="let items" (click)="openItemDelete(items.id)">DELETE </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

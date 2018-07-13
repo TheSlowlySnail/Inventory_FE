@@ -11,7 +11,7 @@
   <br>
 
   <mat-form-field>
-    <textarea matInput name="description" placeholder="Beschreibung" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+    <textarea matInput name="description" placeholder="description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
       [(ngModel)]="description"></textarea>
   </mat-form-field>
 
@@ -58,16 +58,16 @@
   <br>
 
   <mat-form-field>
-    <textarea matInput name="annotation" placeholder="Anmerkung" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+    <textarea matInput name="annotation" placeholder="annotation" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
       [(ngModel)]="annotation"></textarea>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="manufactor" placeholder="Hersteller" [(ngModel)]="manufactor">
+    <input matInput name="manufactor" placeholder="manufactor" [(ngModel)]="manufactor">
   </mat-form-field>
 
   <br>
   <input type="file" (change)='onFileSelected($event)' name="image" id="image" type="file">
   <br>
-  <button mat-raised-button color="green" (click)='onSubmit()'>Item speichern</button>
+  <button mat-raised-button color="green" (click)='onSubmit()'>Save Item</button>
 </form>

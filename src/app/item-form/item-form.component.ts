@@ -4,6 +4,7 @@ import { ItemFormService } from '../item-form.service';
 import { ItemClass } from '../ItemClass';
 
 import { FormControl, Validators } from '@angular/forms';
+import {  Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'shl-item-form',
@@ -22,7 +23,7 @@ export class ItemFormComponent implements OnInit {
   public manufactor: string;
   selectedFile: File = null;
 
-  constructor(public itemFormService: ItemFormService) {}
+  constructor(private itemFormService: ItemFormService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -43,6 +44,8 @@ export class ItemFormComponent implements OnInit {
 
     console.log(this.item);
     this.itemFormService.addItem(this.item);
+
+    this.router.navigate(['/dash/items']);
   }
 
   onFileSelected(event) {

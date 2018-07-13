@@ -54,7 +54,7 @@ import {
 import { LendOverviewComponent } from './lend-overview/lend-overview.component';
 import { LendsOverviewAllComponent } from './lends-overview-all/lends-overview-all.component';
 import { ExcelImportExportComponent } from './excel-import-export/excel-import-export.component';
-
+import { LendEditComponent } from './lend-edit/lend-edit.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
@@ -83,6 +83,7 @@ const appRoutes: Routes = [
       { path: 'edititem/:id', component: ItemEditComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'form', component: ItemFormComponent },
+      { path: 'elend/:id', component: LendEditComponent }
     ]
   },
   { path: 'signin', component: SigninComponent },
@@ -115,7 +116,7 @@ const appRoutes: Routes = [
 
     ExcelImportExportComponent,
 
-
+    LendEditComponent
   ],
   imports: [
     BrowserModule,

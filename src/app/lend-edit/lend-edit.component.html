@@ -1,0 +1,36 @@
+<ng-container *ngIf="lends" >
+
+
+
+
+    <form class="lend-form" (ngSubmit)="onChangeData(lendform)" #lendform="ngForm">
+      <mat-form-field>
+        <input matInput name="personid" placeholder="Person id" required [(ngModel)]="lends.personid" >
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput name="startdate" [matDatepicker]="startpicker" placeholder="Choose a Startdate" [(ngModel)]="lends.startdate">
+
+        <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+        <mat-datepicker #startpicker></mat-datepicker>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput name="enddate" [matDatepicker]="endpicker" placeholder="Choose a Enddate" [(ngModel)]="lends.enddate">
+        <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+        <mat-datepicker #endpicker></mat-datepicker>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput name="annotation" placeholder="annotation" [(ngModel)]="lends.annotation">
+
+
+      </mat-form-field>
+      <br>
+      <button mat-raised-button  color="green" type="submit">Save Lend</button>
+    </form>
+
+  </ng-container>

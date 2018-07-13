@@ -20,6 +20,7 @@ export class ItemEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.load(this.data);
+    console.log(this.data);
   }
   public id: number;
   public barcode: string;
@@ -83,6 +84,7 @@ export class ItemEditComponent implements OnInit {
   onChangeData(form: NgForm) {
     console.log('komm ich hier rein?');
     console.log(form);
+    debugger
 
     this.barcode = form.value.barcode;
     console.log(this.barcode);
