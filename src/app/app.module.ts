@@ -80,11 +80,11 @@ const appRoutes: Routes = [
       { path: 'lend', component: LendComponent },
       { path: 'lendpid', component: LendOverviewComponent },
       { path: 'lends', component: LendsOverviewAllComponent },
-      { path: 'edititem/:id', component: ItemEditComponent }
+      { path: 'edititem/:id', component: ItemEditComponent },
+      { path: 'signup', component: SignUpComponent },
+      { path: 'form', component: ItemFormComponent },
     ]
   },
-  { path: 'form', component: ItemFormComponent },
-  { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'excel', component: ExcelImportExportComponent },
 

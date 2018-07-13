@@ -94,6 +94,7 @@ export class ItemEditComponent implements OnInit {
     this.annotation = form.value.annotation;
     this.lend = form.value.lend;
     this.manufactor = form.value.manufactor;
+    this.type = form.value.type;
 
     if (this.selectedFile) {
       this.image = 'http://localhost:8000/images/' + this.selectedFile.name;

@@ -12,6 +12,7 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../user.service';
 import { UserClass } from '../UserClass';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 @Component({
   selector: 'shl-user-list',
   templateUrl: './user-list.component.html',
@@ -63,6 +64,15 @@ export class UserListComponent implements OnInit {
 
   delete(id) {
     this.userService.deleteUser(id).subscribe(data => console.log(data));
+  }
+
+  openDialog(id) {
+    console.log('openDialog');
+    this.dialog.open(EditUserComponent, {
+      data: {
+        compId: id
+      }
+    });
   }
 }
 

@@ -28,7 +28,7 @@ export class AuthService implements OnDestroy {
     email: string,
     firstname: string,
     lastname: string,
-    role: string = 'user',
+    role: string,
     password: string,
     c_password: string,
     annotation: string

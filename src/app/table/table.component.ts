@@ -46,7 +46,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.userService.user.persons.role === 'User') {
-      console.log('in der if verzweigung');
+
       this.displayedColumns = [
         'barcode',
         'name',
@@ -106,6 +106,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   openLendDialog(id) {
+
     this.dialog.open(LendComponent, {
       data: {
         compId: id

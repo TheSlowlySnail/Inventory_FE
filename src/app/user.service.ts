@@ -29,7 +29,7 @@ export class UserService {
   }
 
   // Nur mit Token erreichbar, deswegen POST
-   getUserDetail() {
+  getUserDetail() {
     this.httpOptions = {
       headers: new HttpHeaders({
         /* 'Content-Type': 'application/json', */
@@ -43,30 +43,26 @@ export class UserService {
     console.log(localStorage.getItem('userToken'));
     console.log('HTTP OPTION');
     console.log(this.httpOptions);
-    return  this.http.post(
-      this.rootUrl + '/userDetails',
-      null,
-      this.httpOptions
-    )
-    .subscribe(
-      (data) => {
+    return this.http
+      .post(this.rootUrl + '/userDetails', null, this.httpOptions)
+      .subscribe(data => {
         this.user = data;
         console.log(data);
-      }
-    );
+      });
   }
 
   editUser(
+    tempid: number,
     id: number,
     email: string,
     firstname: string,
     lastname: string,
-    role?: string,
+    role: string,
     annotation?: string
   ) {
     return this.http
       .put(
-        'http://127.0.0.1:8000/api/user/' + id,
+        'http://127.0.0.1:8000/api/user/' + tempid,
         {
           personid: id,
           email: email,

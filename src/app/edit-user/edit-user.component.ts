@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Inject } from '@angular/core';
 import { UserService } from '../user.service';
 import { PersonModel, PersonDto } from '../user-list/user-list.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Form, NgForm } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '../../../node_modules/@angular/material';
 
 @Component({
   selector: 'shl-edit-user',
@@ -14,6 +15,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   public personEditModell: PersonModel;
   // public username: string;
   private personid: number;
+  private temppersonid: number;
   public email: string;
   public role: string;
   public password: string;
@@ -28,19 +30,25 @@ export class EditUserComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private router: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   public subscribtions = [];
   test;
   ngOnInit() {
+    if (this.data.compId != null) {
+      console.log(this.data);
+      this.temppersonid = this.data.compId;
+    } else {
+      this.temppersonid = Number(this.router.snapshot.paramMap.get('id'));
+    }
 
-    this.personid = Number( this.router.snapshot.paramMap.get('id'));
     /* this.subscribtions.push(
       this.router.params.subscribe((params: Params) => {
         this.loadPerson(this.userService.user.id);
       })
     ); */
-    this.loadPerson(this.personid);
+    this.loadPerson(this.temppersonid);
     console.log(this.userJson);
   }
   ngOnDestroy(): void {
@@ -61,17 +69,24 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   onChangeData(form: NgForm) {
-
     this.email = form.value.email;
     console.log(this.email);
     console.log(this.userService.user.persons.id);
     this.personid = form.value.personid;
-    //  this.personEditModell.role = form.valid.role;
+    this.role = form.value.role;
+    console.log(this.role);
     this.firstname = form.value.firstname;
     this.lastname = form.value.lastname;
     this.annotation = form.value.annotation;
 
-    this.userService.editUser(this.userService.user.persons.id, this.email, this.firstname, this.lastname);
+    this.userService.editUser(
+      this.temppersonid,
+      this.personid,
+      this.email,
+      this.firstname,
+      this.lastname,
+      this.role
+    );
   }
 }
 export class Person {

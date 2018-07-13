@@ -46,6 +46,21 @@
         </a>
 
       </span>
+      <span *ngIf="userService.user.persons.role == 'Admin'" >
+
+        <a [routerLink]="['signup']">
+          New User
+        </a>
+
+      </span>
+
+      <span *ngIf="userService.user.persons.role == 'Admin'" >
+
+        <a [routerLink]="['form']">
+          New Item
+        </a>
+
+      </span>
 
       <span >
 

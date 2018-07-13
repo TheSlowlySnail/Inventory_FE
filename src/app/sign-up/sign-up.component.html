@@ -21,6 +21,16 @@
   <mat-form-field>
     <input matInput name="lastname" placeholder="lastname" [(ngModel)]="lastname" required>
   </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-select name="role" placeholder="Role" [(ngModel)]="role">
+      <mat-option name="role" value="Admin">Admin</mat-option>
+      <mat-option name="role" value="User">User</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <br>
 
   <mat-form-field>
     <input matInput name="password" placeholder="Password" [(ngModel)]="password" required>

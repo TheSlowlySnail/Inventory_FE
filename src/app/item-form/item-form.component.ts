@@ -17,6 +17,7 @@ export class ItemFormComponent implements OnInit {
   public description: string;
   public type: string;
   public room: string;
+  public status: string;
   public annotation: string;
   public manufactor: string;
   selectedFile: File = null;
@@ -32,6 +33,7 @@ export class ItemFormComponent implements OnInit {
     this.item.description = this.description;
     this.item.type = this.type;
     this.item.room = this.room;
+    this.item.status = this.status;
     this.item.annotation = this.annotation;
     this.item.manufactor = this.manufactor;
     if (this.selectedFile) {

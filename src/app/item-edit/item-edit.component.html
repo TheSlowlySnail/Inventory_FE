@@ -29,18 +29,44 @@
 
   <mat-form-field>
 <mat-select name="room" placeholder="Room" [(ngModel)]="items.room">
-      <mat-option name="room" value="multimedia">multimedia</mat-option>
-      <mat-option name="room" value="bath">bath</mat-option>
-      <mat-option name="room" value="kitchen">kitchen</mat-option>
+    <mat-option value="workplace">workplace</mat-option>
+    <mat-option value="kitchen">kitchen</mat-option>
+    <mat-option value="bath">bath</mat-option>
+    <mat-option value="iot">IOT</mat-option>
+    <mat-option value="media">media</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-<mat-select name="status" placeholder="Status" [(ngModel)]="items.status">
-      <mat-option name="status" value="installed">installed</mat-option>
-      <mat-option name="status" value="packaged">packaged</mat-option>
+<br>
+
+<mat-form-field>
+    <mat-select name="type" placeholder="Type" [(ngModel)]="items.type">
+      <mat-option value="bulb">Bulb</mat-option>
+      <mat-option value="equipment">equipment
+      </mat-option>
+      <mat-option value="operating element">operating element</mat-option>
+      <mat-option value="sensor">sensor</mat-option>
+      <mat-option value="microphone">microphone</mat-option>
+      <mat-option value="camera">camera</mat-option>
+      <mat-option value="device">device</mat-option>
+      <mat-option value="socket">socket</mat-option>
+      <mat-option value="book">book</mat-option>
+      <mat-option value="tool">Tool</mat-option>
     </mat-select>
   </mat-form-field>
+  <br>
+
+
+  <mat-form-field>
+      <mat-select name="status"  placeholder="Status" [(ngModel)]="items.status">
+        <mat-option value="installed">installed</mat-option>
+        <mat-option value="packaged">packaged</mat-option>
+        <mat-option value="defect">defect</mat-option>
+        <mat-option value="lend">lend</mat-option>
+        <mat-option value="lost">lost</mat-option>
+      </mat-select>
+    </mat-form-field>
+
 
 
   <mat-form-field>
