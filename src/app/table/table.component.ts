@@ -117,6 +117,5 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   openItemDelete(id) {
     this.itemService.deleteItem(id);
-    console.log('Item ' + id +  ' was deleted');
   }
 }

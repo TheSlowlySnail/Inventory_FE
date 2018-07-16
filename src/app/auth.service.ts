@@ -12,16 +12,13 @@ export class AuthService implements OnDestroy {
   httpOptions = {
     headers: new HttpHeaders({
       /* 'Content-Type': 'application/json', */
-       'X-Requested-With': 'XMLHttpRequest',
+      'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json'
     })
   };
   subscribe: ISubscription;
 
-  constructor(private http: HttpClient) {
-
-
-    }
+  constructor(private http: HttpClient) {}
 
   ngOnDestroy(): void {
     this.subscribe.unsubscribe();
@@ -37,7 +34,6 @@ export class AuthService implements OnDestroy {
     c_password: string,
     annotation: string
   ) {
-    console.log('authservice.signUp');
     return this.http.post(
       'http://127.0.0.1:8000/api/userRegister',
       {
@@ -51,40 +47,7 @@ export class AuthService implements OnDestroy {
       },
       this.httpOptions
     );
-      // .subscribe(
-      //   respone => {
-      //     console.log(respone);
-
-      //   },
-      //   err => console.log(err)
-      // );
   }
-
-  // signupSubscribe(
-  //   studentid: string,
-  //   email: string,
-  //   firstname: string,
-  //   lastname: string,
-  //   role: string = 'user',
-  //   password: string,
-  //   c_password: string
-  // ) {
-  //   console.log('authservice.signUp');
-  //   this.subscribe = this.signup(
-  //     studentid,
-  //     email,
-  //     firstname,
-  //     lastname,
-  //     role,
-  //     password,
-  //     c_password
-  //   ).subscribe(
-  //     respone => {
-  //       console.log(respone);
-  //     },
-  //     err => console.log(err)
-  //   );
-  // }
 
   login(email: string, password: string) {
     return (
@@ -99,7 +62,6 @@ export class AuthService implements OnDestroy {
         .shareReplay()
     );
   }
-
 }
 
 interface TokenJson {

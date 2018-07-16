@@ -28,7 +28,7 @@ export class LendService {
   putLend(lend: any) {
     console.log(lend);
     return this.http
-      .put('http://127.0.0.1:8000/api/lend/' + lend.id , lend, this.httpOptions)
+      .put('http://127.0.0.1:8000/api/lend/' + lend.id, lend, this.httpOptions)
       .subscribe(
         result => {
           console.log(result);
@@ -40,12 +40,10 @@ export class LendService {
   }
 
   getLendsOfUser(personId) {
-    console.log('http://127.0.0.1:8000/api/pidlends?pid=' + personId);
     return this.http.get('http://127.0.0.1:8000/api/pidlends?pid=' + personId);
   }
 
   getLendsOfAllUser() {
-
     return this.http.get('http://127.0.0.1:8000/api/lends');
   }
 }

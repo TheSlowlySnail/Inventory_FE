@@ -70,8 +70,6 @@ export class LendComponent implements OnInit, AfterViewInit {
   }
 
   onChangeData(form: NgForm) {
-    console.log(this.datepicker._selected);
-    console.log(form.value.studentid);
     this.lend.itemid = this.items.id;
     this.lend.personid = form.value.studentid;
     // this.lend.personid = form.value.studentid;
@@ -85,7 +83,7 @@ export class LendComponent implements OnInit, AfterViewInit {
     this.lend.enddate = form.value.enddate._d;
 
     this.itemService.editItem(
-     Number( this.items.id),
+      Number(this.items.id),
       this.items.barcode,
       this.items.name,
       this.items.description,
@@ -94,7 +92,6 @@ export class LendComponent implements OnInit, AfterViewInit {
       'lend',
       this.items.annotation
     );
-    console.log(this.lend);
 
     this.lendService.addLend(this.lend);
   }

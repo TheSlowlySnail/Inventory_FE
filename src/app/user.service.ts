@@ -18,7 +18,7 @@ export class UserService {
   };
 
   constructor(private http: HttpClient) {
-    //console.log(localStorage.getItem('userToken'));
+
   }
 
   getUser(id: number) {
@@ -38,11 +38,7 @@ export class UserService {
         Authorization: `Bearer ${localStorage.getItem('userToken')}`
       })
     };
-    console.log('getUserDetail');
 
-    console.log(localStorage.getItem('userToken'));
-    console.log('HTTP OPTION');
-    console.log(this.httpOptions);
     return this.http
       .post(this.rootUrl + '/userDetails', null, this.httpOptions)
       .subscribe(data => {
@@ -72,12 +68,6 @@ export class UserService {
           annotation: annotation
         },
         this.httpOptions
-      )
-      .subscribe(
-        respone => {
-          console.log(respone);
-        },
-        err => console.log(err)
       );
   }
 

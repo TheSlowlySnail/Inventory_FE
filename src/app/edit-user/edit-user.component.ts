@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, OnDestroy, Inject } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Inject, ViewContainerRef } from '@angular/core';
 import { UserService } from '../user.service';
 import { PersonModel, PersonDto } from '../user-list/user-list.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Form, NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '../../../node_modules/@angular/material';
+import { ToastsManager } from '../../../node_modules/ng2-toastr';
 
 @Component({
   selector: 'shl-edit-user',
@@ -31,13 +32,16 @@ export class EditUserComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: ActivatedRoute,
     private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
   public subscribtions = [];
   test;
   ngOnInit() {
     if (this.data.compId != null) {
-      console.log(this.data);
       this.temppersonid = this.data.compId;
     } else {
       this.temppersonid = Number(this.router.snapshot.paramMap.get('id'));
@@ -49,7 +53,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
       })
     ); */
     this.loadPerson(this.temppersonid);
-    console.log(this.userJson);
   }
   ngOnDestroy(): void {
     this.subscribtions.map(s => s.unsubscribe());
@@ -70,22 +73,39 @@ export class EditUserComponent implements OnInit, OnDestroy {
 
   onChangeData(form: NgForm) {
     this.email = form.value.email;
-    console.log(this.email);
-    console.log(this.userService.user.persons.id);
+
     this.personid = form.value.personid;
     this.role = form.value.role;
-    console.log(this.role);
+
     this.firstname = form.value.firstname;
     this.lastname = form.value.lastname;
     this.annotation = form.value.annotation;
 
-    this.userService.editUser(
-      this.temppersonid,
-      this.personid,
-      this.email,
-      this.firstname,
-      this.lastname,
-      this.role
+    this.userService
+      .editUser(
+        this.temppersonid,
+        this.personid,
+        this.email,
+        this.firstname,
+        this.lastname,
+        this.role
+      )
+      .subscribe(
+        respone => {
+         this.showSuccess();
+        },
+        err => this.showError()
+      );
+  }
+
+  showSuccess() {
+    this.toastr.success('SUCCESS: User edit!', 'Success!');
+  }
+
+  showError() {
+    this.toastr.error(
+      'ERROR: Look into console!',
+      'Oops!'
     );
   }
 }

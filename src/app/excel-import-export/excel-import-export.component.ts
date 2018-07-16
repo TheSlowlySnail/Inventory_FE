@@ -26,8 +26,7 @@ export class ExcelImportExportComponent implements OnInit {
   }
 
   async onUploadWithFileName() {
-    console.log(this.selectedFile);
-    // this.selectedFile = <File>event.target.files[0];
+
 
     await this.itemFormService.onUploadWithFileName(this.selectedFile);
     this.showSuccess();

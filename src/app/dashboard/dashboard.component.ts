@@ -24,10 +24,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscribtion = this.userService
-      .getUserDetail();
-      this.userClaims = this.userService.user;
-      console.log(this.userClaims);
+    this.subscribtion = this.userService.getUserDetail();
+    this.userClaims = this.userService.user;
   }
 
   ngOnDestroy() {
@@ -36,11 +34,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   onLogOut() {
     localStorage.removeItem('userToken');
-    console.log('delete usertoken');
-    console.log(localStorage.getItem('userToken'));
+
     this.router.navigate(['/signin']);
     this.editUserComponent.subscribtions = [];
-    console.log(this.editUserComponent.subscribtions);
+
     this.userService.user = new Person();
   }
 }
