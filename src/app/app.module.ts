@@ -56,6 +56,8 @@ import { LendsOverviewAllComponent } from './lends-overview-all/lends-overview-a
 import { ExcelImportExportComponent } from './excel-import-export/excel-import-export.component';
 import { LendEditComponent } from './lend-edit/lend-edit.component';
 
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
 const appRoutes: Routes = [
   { path: 'home', component: TableComponent },
   {
@@ -83,11 +85,11 @@ const appRoutes: Routes = [
       { path: 'edititem/:id', component: ItemEditComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'form', component: ItemFormComponent },
-      { path: 'elend/:id', component: LendEditComponent }
+      { path: 'elend/:id', component: LendEditComponent },
+      { path: 'excel', component: ExcelImportExportComponent },
     ]
   },
   { path: 'signin', component: SigninComponent },
-  { path: 'excel', component: ExcelImportExportComponent },
 
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: '**', redirectTo: 'signin', pathMatch: 'full' }
@@ -140,7 +142,9 @@ const appRoutes: Routes = [
     MomentModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    ToastModule.forRoot(),
   ],
   providers: [
     ItemFormService,

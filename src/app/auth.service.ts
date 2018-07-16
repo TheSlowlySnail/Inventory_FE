@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, ViewContainerRef } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
@@ -6,6 +6,7 @@ import { _do } from 'rxjs/operator/do';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import { ISubscription } from 'rxjs/Subscription';
+import { ToastsManager } from '../../node_modules/ng2-toastr';
 @Injectable()
 export class AuthService implements OnDestroy {
   httpOptions = {
@@ -17,7 +18,10 @@ export class AuthService implements OnDestroy {
   };
   subscribe: ISubscription;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+
+    }
 
   ngOnDestroy(): void {
     this.subscribe.unsubscribe();
@@ -46,13 +50,14 @@ export class AuthService implements OnDestroy {
         annotation: annotation
       },
       this.httpOptions
-    )
-      .subscribe(
-        respone => {
-          console.log(respone);
-        },
-        err => console.log(err)
-      );
+    );
+      // .subscribe(
+      //   respone => {
+      //     console.log(respone);
+
+      //   },
+      //   err => console.log(err)
+      // );
   }
 
   // signupSubscribe(
@@ -94,6 +99,7 @@ export class AuthService implements OnDestroy {
         .shareReplay()
     );
   }
+
 }
 
 interface TokenJson {

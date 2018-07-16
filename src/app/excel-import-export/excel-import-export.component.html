@@ -2,7 +2,13 @@
 
 <input type="file" (change)='onFileSelected($event)' name="file" id="file">
   <br>
+  <br>
 <button mat-raised-button color="green" (click)='onUploadWithFileName()'>Import File</button>
 </form>
+<br>
 
-<a href="http://127.0.0.1:8000/api/excelexport"></a>
+<span class="export">
+
+  <a href="http://127.0.0.1:8000/api/export">Export Data</a>
+
+</span>

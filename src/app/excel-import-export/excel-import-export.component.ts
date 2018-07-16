@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ItemFormService } from '../item-form.service';
+
+import { ToastsManager } from '../../../node_modules/ng2-toastr';
 
 @Component({
   selector: 'shl-excel-import-export',
@@ -9,7 +11,13 @@ import { ItemFormService } from '../item-form.service';
 export class ExcelImportExportComponent implements OnInit {
   selectedFile: File = null;
 
-  constructor(private itemFormService: ItemFormService) {}
+  constructor(
+    private itemFormService: ItemFormService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {}
 
@@ -22,6 +30,10 @@ export class ExcelImportExportComponent implements OnInit {
     // this.selectedFile = <File>event.target.files[0];
 
     await this.itemFormService.onUploadWithFileName(this.selectedFile);
-    console.log('Excel imported');
+    this.showSuccess();
+  }
+
+  showSuccess() {
+    this.toastr.success('SUCCESS: Exel imported!', 'Success!');
   }
 }

@@ -5,7 +5,7 @@
     <div class="felx-container hfu">
 
       <span>SHL Inventory </span>
-      <span ></span>
+
 
       <span  *ngIf="userService.user">
 
@@ -58,6 +58,14 @@
 
         <a [routerLink]="['form']">
           New Item
+        </a>
+
+      </span>
+
+      <span class="newitem" *ngIf="userService.user.persons.role == 'Admin'" >
+
+        <a [routerLink]="['excel']">
+          Backup
         </a>
 
       </span>
