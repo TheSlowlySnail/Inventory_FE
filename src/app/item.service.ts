@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { identifierModuleUrl } from '../../node_modules/@angular/compiler';
 
 @Injectable()
 export class ItemService {
@@ -48,6 +49,21 @@ export class ItemService {
           manufactor: manufactor
         },
         this.httpOptions
+      )
+      .subscribe(
+        respone => {
+          console.log('Edit Item');
+          console.log(respone);
+        },
+        err => console.log(err)
+      );
+  }
+
+  changeStatusToBack(id) {
+
+    return this.http
+      .put(
+        'http://127.0.0.1:8000/api/itemback/' + id, this.httpOptions
       )
       .subscribe(
         respone => {

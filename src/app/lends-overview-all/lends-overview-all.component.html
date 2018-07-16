@@ -44,7 +44,7 @@
 
   <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
-      <mat-cell *matCellDef="let item" (click)="onLendDelete(item.id)"  >DELETE</mat-cell>
+      <mat-cell *matCellDef="let item" (click)="onLendDelete(item.id, item.itemid)"  >DELETE</mat-cell>
 
     </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
