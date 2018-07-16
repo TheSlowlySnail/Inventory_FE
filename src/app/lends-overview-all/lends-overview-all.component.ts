@@ -26,6 +26,21 @@ export class LendsOverviewAllComponent implements OnInit {
 
   subscription = [];
 
+  private items: {
+    annotation: string;
+    barcode: string;
+    created_at: string;
+    description: string;
+    id: string;
+    image: string;
+    lend: string;
+    manufactor: string;
+    name: string;
+    room: string;
+    status: string;
+    type: string;
+  };
+
   constructor(
     private http: HttpClient,
     private lendService: LendService,
@@ -48,6 +63,16 @@ export class LendsOverviewAllComponent implements OnInit {
   }
 
   onLendDelete(id) {
+    // this.itemService.editItem(
+    //   Number( this.items.id),
+    //    this.items.barcode,
+    //    this.items.name,
+    //    this.items.description,
+    //    this.items.type,
+    //    this.items.room,
+    //    'back',
+    //    this.items.annotation
+    //  );
     return this.http
       .delete('http://127.0.0.1:8000/api/lend/' + id)
       .subscribe(data => console.log(data));
