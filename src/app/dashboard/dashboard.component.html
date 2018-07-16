@@ -46,7 +46,7 @@
         </a>
 
       </span>
-      <span *ngIf="userService.user.persons.role == 'Admin'" >
+      <span class="newuser" *ngIf="userService.user.persons.role == 'Admin'" >
 
         <a [routerLink]="['signup']">
           New User
@@ -54,7 +54,7 @@
 
       </span>
 
-      <span *ngIf="userService.user.persons.role == 'Admin'" >
+      <span class="newitem" *ngIf="userService.user.persons.role == 'Admin'" >
 
         <a [routerLink]="['form']">
           New Item
@@ -62,7 +62,7 @@
 
       </span>
 
-      <span >
+      <span class="logout" >
 
         <a (click)="onLogOut()">
           Log out
