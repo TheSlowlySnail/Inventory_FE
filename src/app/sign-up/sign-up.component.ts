@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
 import { ToastsManager } from '../../../node_modules/ng2-toastr';
@@ -12,9 +12,9 @@ export class SignUpComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public toastr: ToastsManager,
-    vcr: ViewContainerRef
+    // vcr: ViewContainerRef
   ) {
-    this.toastr.setRootViewContainerRef(vcr);
+    // this.toastr.setRootViewContainerRef(vcr);
   }
   public studentid: string;
   public email: string;

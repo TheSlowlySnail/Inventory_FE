@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, Inject, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Inject } from '@angular/core';
 import { UserService } from '../user.service';
 import { PersonModel, PersonDto } from '../user-list/user-list.component';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -34,9 +34,9 @@ export class EditUserComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public toastr: ToastsManager,
-    vcr: ViewContainerRef
+    // vcr: ViewContainerRef
   ) {
-    this.toastr.setRootViewContainerRef(vcr);
+    // this.toastr.setRootViewContainerRef(vcr);
   }
   public subscribtions = [];
   test;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemFormService } from '../item-form.service';
 
 import { ToastsManager } from '../../../node_modules/ng2-toastr';
@@ -14,9 +14,9 @@ export class ExcelImportExportComponent implements OnInit {
   constructor(
     private itemFormService: ItemFormService,
     public toastr: ToastsManager,
-    vcr: ViewContainerRef
+    // vcr: ViewContainerRef
   ) {
-    this.toastr.setRootViewContainerRef(vcr);
+    // this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {}
